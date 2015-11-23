@@ -1,0 +1,468 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta name="generator"
+    content="HTML Tidy for HTML5 (experimental) for Windows https://github.com/w3c/tidy-html5/tree/c63cc39" />
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <link rel="icon" href="../../favicon.ico" />
+    <title>钻石商城</title>
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.css" rel="stylesheet" />
+    <!-- Custom styles for this template -->
+    <link href="css/diamond-template.css" rel="stylesheet" />
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
+
+  
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="//cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+  <div id="header"></div>
+  <div id="MD" class="container-fluid">
+    <div class="row-fluid">
+      <div class="col-xs-2 span2">
+	  <div class="panel panel-default panel-message">
+          <div class="panel-heading">
+            展开/隐藏搜索条件
+          </div>
+          <div class="panel-body" id="navList">
+        <ul class="nav nav-list">
+          <li class="nav-header">列表标题</li>
+          <li class="active">
+            <a href="#">首页</a>
+          </li>
+          <li>
+            <a href="#">库</a>
+          </li>
+          <li>
+            <a href="#">应用</a>
+          </li>
+          <li class="nav-header">功能列表</li>
+          <li>
+            <a href="#">资料</a>
+          </li>
+          <li>
+            <a href="#">设置</a>
+          </li>
+          <li>
+            <a href="#">帮助</a>
+          </li>
+        </ul>
+		</div>
+		</div>
+      </div>
+      <div class="col-xs-10 span10">
+        <ul class="breadcrumb">
+          <li>
+            <a href="#">主页</a>
+          </li>
+          <li>
+            <a href="#">类目</a>
+          </li>
+          <li class="active">主题</li>
+        </ul>
+        <div style="height:10px"></div>
+        <div class="panel panel-default panel-info">
+          <div class="panel-heading">
+            <a href="#searchPanel" data-toggle="collapse" class="">展开/隐藏搜索条件</a>
+          </div>
+          <div class="panel-body search-panel" id="searchPanel">
+            <form id="queryDiamondForm" name="queryDiamondForm" role="form">
+              <div class="row">
+                <div class="col-lg-8 col-md-8" style="border-right:1px solid #ddd;border-top:1px solid #ddd;">
+                  <div class="row">
+                    <label class="col-lg-2 col-md-2 searchLabel" style="height: 61px;line-height: 61px;">形状</label>
+                    <div class="col-lg-10 col-md-10 search-shape" style="margin-bottom:1px;">
+                   <a href="javascript:;" data-toggle="tooltip" title="圆形"
+											onclick="selectCheckbox('queryShapeRound')"><span
+											class="shape-round"></span> </a> <a href="javascript:;"
+											data-toggle="tooltip" title="公主方"
+											onclick="selectCheckbox('queryShapePrincess')"><span
+											class="shape-princess"></span> </a> <a href="javascript:;"
+											data-toggle="tooltip" title="祖母绿"
+											onclick="selectCheckbox('queryShapeEmerald')"><span
+											class="shape-emerald"></span> </a> <a href="javascript:;"
+											data-toggle="tooltip" title="雷迪恩"
+											onclick="selectCheckbox('queryShapeRadiant')"><span
+											class="shape-radiant"></span> </a> <a href="javascript:;"
+											data-toggle="tooltip" title="椭圆形"
+											onclick="selectCheckbox('queryShapeOval')"><span
+											class="shape-oval"></span> </a> <a href="javascript:;"
+											data-toggle="tooltip" title="梨形"
+											onclick="selectCheckbox('queryShapePear')"><span
+											class="shape-pear"></span> </a> <a href="javascript:;"
+											data-toggle="tooltip" title="马眼形"
+											onclick="selectCheckbox('queryShapeMarquise')"><span
+											class="shape-marquise"></span> </a> <a href="javascript:;"
+											data-toggle="tooltip" title="心形"
+											onclick="selectCheckbox('queryShapeHeart')"><span
+											class="shape-heart"></span> </a> <a href="javascript:;"
+											data-toggle="tooltip" title="三角形"
+											onclick="selectCheckbox('queryShapeTriangle')"><span
+											class="shape-triangle"></span> </a> <a href="javascript:;"
+											data-toggle="tooltip" title="垫形"
+											onclick="selectCheckbox('queryShapeCushion')"><span
+											class="shape-cushion"></span> </a> <a href="javascript:;"
+											data-toggle="tooltip" title="其他"
+											onclick="selectCheckbox('containOtherShape')"><span
+											class="shape-other"></span> </a> <input type="checkbox"
+											name="shape" value="round" style="display:none"
+											id="queryShapeRound"> <input type="checkbox"
+											name="shape" value="princess" style="display:none"
+											id="queryShapePrincess"> <input type="checkbox"
+											name="shape" value="emerald" style="display:none"
+											id="queryShapeEmerald"> <input type="checkbox"
+											name="shape" value="radiant" style="display:none"
+											id="queryShapeRadiant"> <input type="checkbox"
+											name="shape" value="oval" style="display:none"
+											id="queryShapeOval"> <input type="checkbox"
+											name="shape" value="pear" style="display:none"
+											id="queryShapePear"> <input type="checkbox"
+											name="shape" value="marquise" style="display:none"
+											id="queryShapeMarquise"> <input type="checkbox"
+											name="shape" value="heart" style="display:none"
+											id="queryShapeHeart"> <input type="checkbox"
+											name="shape" value="triangle" style="display:none"
+											id="queryShapeTriangle"> <input type="checkbox"
+											name="shape" value="cushion" style="display:none"
+											id="queryShapeCushion"> <input type="checkbox"
+											name="containOtherShape" value="1" style="display:none"
+											id="containOtherShape">
+											</div>
+                  </div>
+                  <div class="row bottom-line"></div>
+                  <div class="row">
+                    <label class="col-lg-2 col-md-2 searchLabel">颜色</label>
+                    <div class="col-lg-10 col-md-10">
+                    <a href="javascript:;" onclick="selectCheckbox('queryColorD')">D</a> 
+                    <a href="javascript:;" onclick="selectCheckbox('queryColorE')">E</a> 
+                    <a href="javascript:;" onclick="selectCheckbox('queryColorF')">F</a> 
+                    <a href="javascript:;" onclick="selectCheckbox('queryColorG')">G</a> 
+                    <a href="javascript:;" onclick="selectCheckbox('queryColorH')">H</a> 
+                    <a href="javascript:;" onclick="selectCheckbox('queryColorI')">I</a> 
+                    <a href="javascript:;" onclick="selectCheckbox('queryColorJ')">J</a> 
+                    <a href="javascript:;" onclick="selectCheckbox('queryColorK')">K</a> 
+                    <a href="javascript:;" onclick="selectCheckbox('queryColorL')">L</a> 
+                    <a href="javascript:;" onclick="selectCheckbox('queryColorM')">M</a> 
+                    <a href="javascript:;" onclick="selectCheckbox('queryColorOther')">彩钻</a></div>
+                    <input type="checkbox" name="color" value="D" style="display:none" id="queryColorD" />
+                    <input type="checkbox" name="color" value="E" style="display:none" id="queryColorE" />
+                    <input type="checkbox" name="color" value="F" style="display:none" id="queryColorF" />
+                    <input type="checkbox" name="color" value="G" style="display:none" id="queryColorG" />
+                    <input type="checkbox" name="color" value="H" style="display:none" id="queryColorH" />
+                    <input type="checkbox" name="color" value="I" style="display:none" id="queryColorI" />
+                    <input type="checkbox" name="color" value="J" style="display:none" id="queryColorJ" />
+                    <input type="checkbox" name="color" value="K" style="display:none" id="queryColorK" />
+                    <input type="checkbox" name="color" value="L" style="display:none" id="queryColorL" />
+                    <input type="checkbox" name="color" value="M" style="display:none" id="queryColorM" />
+                    <input type="checkbox" name="multicolour" value="1" style="display:none" id="queryColorOther" />
+                  </div>
+                  <div class="row bottom-line"></div>
+                  <div class="row">
+                  <label class="col-lg-2 col-md-2 searchLabel">净度</label>
+                  <div class="col-lg-10 col-md-10">
+                  <a href="javascript:;" onclick="selectCheckbox('queryClarityFL')">FL</a> 
+                  <a href="javascript:;" onclick="selectCheckbox('queryClarityIF')">IF</a> 
+                  <a href="javascript:;" onclick="selectCheckbox('queryClarityVVS1')">VVS1</a> 
+                  <a href="javascript:;" onclick="selectCheckbox('queryClarityVVS2')">VVS2</a> 
+                  <a href="javascript:;" onclick="selectCheckbox('queryClarityVS1')">VS1</a> 
+                  <a href="javascript:;" onclick="selectCheckbox('queryClarityVS2')">VS2</a> 
+                  <a href="javascript:;" onclick="selectCheckbox('queryClaritySI1')">SI1</a> 
+                  <a href="javascript:;" onclick="selectCheckbox('queryClaritySI2')">SI2</a> 
+                  <a href="javascript:;" onclick="selectCheckbox('queryClaritySI3')">SI3</a> 
+                  <a href="javascript:;" onclick="selectCheckbox('queryClarityI1')">I1</a> 
+                  <a href="javascript:;" onclick="selectCheckbox('queryClarityI2')">I2</a> 
+                  <a href="javascript:;" onclick="selectCheckbox('queryClarityI3')">I3</a></div>
+                  <input type="checkbox" name="clarity" value="FL" style="display:none" id="queryClarityFL" /> 
+                  <input type="checkbox" name="clarity" value="IF" style="display:none" id="queryClarityIF" /> 
+                  <input type="checkbox" name="clarity" value="VVS1" style="display:none" id="queryClarityVVS1" /> 
+                  <input type="checkbox" name="clarity" value="VVS2" style="display:none" id="queryClarityVVS2" /> 
+                  <input type="checkbox" name="clarity" value="VS1" style="display:none" id="queryClarityVS1" /> 
+                  <input type="checkbox" name="clarity" value="VS2" style="display:none" id="queryClarityVS2" /> 
+                  <input type="checkbox" name="clarity" value="SI1" style="display:none" id="queryClaritySI1" /> 
+                  <input type="checkbox" name="clarity" value="SI2" style="display:none" id="queryClaritySI2" /> 
+                  <input type="checkbox" name="clarity" value="SI3" style="display:none" id="queryClaritySI3" /> 
+                  <input type="checkbox" name="clarity" value="I1" style="display:none" id="queryClarityI1" /> 
+                  <input type="checkbox" name="clarity" value="I2" style="display:none" id="queryClarityI2" /> 
+                  <input type="checkbox" name="clarity" value="I3" style="display:none" id="queryClarityI3" /></div>
+                  <div class="row" style="height:1px;border-bottom:1px solid #ddd;"></div>
+                  <div class="row">
+                  <label class="col-lg-2 col-md-2 searchLabel">切工</label>
+                  <div class="col-lg-10 col-md-10">
+                  <a href="javascript:;" onclick="selectCheckbox('queryCutIdeal')">Ideal</a> 
+                  <a href="javascript:;" onclick="selectCheckbox('queryCutExc')" style="width:96px;">Excellent</a> 
+                  <a href="javascript:;" onclick="selectCheckbox('queryCutVG')" style="width:96px;">VeryGood</a> 
+                  <a href="javascript:;" onclick="selectCheckbox('queryCutG')">Good</a> 
+                  <a href="javascript:;" onclick="selectCheckbox('queryCutF')">Fair</a> 
+                  <a href="javascript:;" onclick="selectCheckbox('queryCutP')">Poor</a> 
+                  <a href="javascript:;" onclick="selectCheckbox('queryCutNone')">无</a></div>
+                  <input type="checkbox" name="cut" value="Ideal" style="display:none" id="queryCutIdeal" /> 
+                  <input type="checkbox" name="cut" value="Excellent" style="display:none" id="queryCutExc" /> 
+                  <input type="checkbox" name="cut" value="VeryGood" style="display:none" id="queryCutVG" /> 
+                  <input type="checkbox" name="cut" value="Good" style="display:none" id="queryCutG" /> 
+                  <input type="checkbox" name="cut" value="Fair" style="display:none" id="queryCutF" /> 
+                  <input type="checkbox" name="cut" value="Poor" style="display:none" id="queryCutP" />
+                  <input type="checkbox" name="containNullCut" value="1" style="display:none" id="queryCutNone" /></div>
+                  <div class="row bottom-line"></div>
+                  <div class="row">
+                  <label class="col-lg-2 col-md-2 searchLabel">抛光</label>
+                  <div class="col-lg-10 col-md-10">
+                  <a href="javascript:;" onclick="selectCheckbox('queryPolishIdeal')">Ideal</a> 
+                  <a href="javascript:;" onclick="selectCheckbox('queryPolishExc')" style="width:96px;">Excellent</a> 
+                  <a href="javascript:;" onclick="selectCheckbox('queryPolishVG')" style="width:96px;">VeryGood</a> 
+                  <a href="javascript:;" onclick="selectCheckbox('queryPolishG')">Good</a> 
+                  <a href="javascript:;" onclick="selectCheckbox('queryPolishFl')">Fair</a> 
+                  <a href="javascript:;" onclick="selectCheckbox('queryPolishP')">Poor</a></div>
+                  <input type="checkbox" name="polish" value="Ideal" style="display:none" id="queryPolishIdeal" /> 
+                  <input type="checkbox" name="polish" value="Excellent" style="display:none" id="queryPolishExc" /> 
+                  <input type="checkbox" name="polish" value="VeryGood" style="display:none" id="queryPolishVG" /> 
+                  <input type="checkbox" name="polish" value="Good" style="display:none" id="queryPolishG" /> 
+                  <input type="checkbox" name="polish" value="Fair" style="display:none" id="queryPolishFl" /> 
+                  <input type="checkbox" name="polish" value="Poor" style="display:none" id="queryPolishP" /></div>
+                  <div class="row bottom-line"></div>
+                  <div class="row">
+                  <label class="col-lg-2 col-md-2 searchLabel">对称</label>
+                  <div class="col-lg-10 col-md-10">
+                  <a href="javascript:;" onclick="selectCheckbox('querySymmI')">Ideal</a> 
+                  <a href="javascript:;" onclick="selectCheckbox('querySymmE')" style="width:96px;">Excellent</a> 
+                  <a href="javascript:;" onclick="selectCheckbox('querySymmV')" style="width:96px;">VeryGood</a> 
+                  <a href="javascript:;" onclick="selectCheckbox('querySymmG')">Good</a> 
+                  <a href="javascript:;" onclick="selectCheckbox('querySymmF')">Fair</a> 
+                  <a href="javascript:;" onclick="selectCheckbox('querySymmP')">Poor</a></div>
+                  <input type="checkbox" name="symm" value="Ideal" style="display:none" id="querySymmI" /> 
+                  <input type="checkbox" name="symm" value="Excellent" style="display:none" id="querySymmE" /> 
+                  <input type="checkbox" name="symm" value="VeryGood" style="display:none" id="querySymmV" /> 
+                  <input type="checkbox" name="symm" value="Good" style="display:none" id="querySymmG" /> 
+                  <input type="checkbox" name="symm" value="Fair" style="display:none" id="querySymmF" /> 
+                  <input type="checkbox" name="symm" value="Poor" style="display:none" id="querySymmP" /></div>
+                  <div class="row bottom-line"></div>
+                  <div class="row">
+                  <label class="col-lg-2 col-md-2 searchLabel">荧光</label>
+                  <div class="col-lg-10 col-md-10">
+                  <a href="javascript:;" onclick="selectCheckbox('queryFluorNone')">None</a> 
+                  <a href="javascript:;" onclick="selectCheckbox('querrFluorVSlight')" style="width:96px;">VerySlight</a> 
+                  <a href="javascript:;" onclick="selectCheckbox('queryFluorSlight')">Slight</a> 
+                  <a href="javascript:;" onclick="selectCheckbox('queryFluorFaint')">Faint</a> 
+                  <a href="javascript:;" onclick="selectCheckbox('queryFluorMedium')">Medium</a> 
+                  <a href="javascript:;" onclick="selectCheckbox('queryFluorStrong')">Strong</a> 
+                  <a href="javascript:;" onclick="selectCheckbox('queryFluorVStrong')" style="width:96px;">VeryStrong</a></div>
+                  <input type="checkbox" name="fluor" value="None" style="display:none" id="queryFluorNone" /> 
+                  <input type="checkbox" name="fluor" value="VerySlight" style="display:none" id="querrFluorVSlight" /> 
+                  <input type="checkbox" name="fluor" value="FluorSlight" style="display:none" id="queryFluorSlight" /> 
+                  <input type="checkbox" name="fluor" value="Faint" style="display:none" id="queryFluorFaint" /> 
+                  <input type="checkbox" name="fluor" value="Medium" style="display:none" id="queryFluorMedium" /> 
+                  <input type="checkbox" name="fluor" value="Strong" style="display:none" id="queryFluorStrong" /> 
+                  <input type="checkbox" name="fluor" value="VeryStrong" style="display:none" id="queryFluorVStrong" /></div>
+                  <div class="row bottom-line"></div>
+                  <div class="row">
+                  <label class="col-lg-2 col-md-2 searchLabel">证书</label>
+                  <div class="col-lg-10 col-md-10">
+                  <a href="javascript:;" onclick="selectCheckbox('queryAuGIA')">GIA</a> 
+                  <a href="javascript:;" onclick="selectCheckbox('queryAuHRD')">HRD</a> 
+                  <a href="javascript:;" onclick="selectCheckbox('queryAuAGS')">AGS</a> 
+                  <a href="javascript:;" onclick="selectCheckbox('queryAuIGI')">IGI</a> 
+                  <a href="javascript:;" onclick="selectCheckbox('queryAuEGL')">EGL</a></div>
+                  <input type="checkbox" name="authenticator" value="GIA" style="display:none" id="queryAuGIA" /> 
+                  <input type="checkbox" name="authenticator" value="HRD" style="display:none" id="queryAuHRD" /> 
+                  <input type="checkbox" name="authenticator" value="AGS" style="display:none" id="queryAuAGS" /> 
+                  <input type="checkbox" name="authenticator" value="IGI" style="display:none" id="queryAuIGI" /> 
+                  <input type="checkbox" name="authenticator" value="EGL" style="display:none" id="queryAuEGL" /></div>
+                  <div class="row bottom-line"></div>
+                </div>
+                <div class="col-lg-4 col-md-4">
+                  <div class="row">
+                    <div class="col-lg-12">
+                      <div class="input-group">
+                      <span class="input-group-addon">重量</span> 
+                      <input type="text" id="minQueryWeight" name="minQueryWeight" maxlength="6" class="form-control" /> 
+                      <span class="input-group-addon">至</span> 
+                      <input type="text" id="maxQueryWeight" name="maxQueryWeight" maxlength="6" class="form-control" /></div>
+                    </div>
+                  </div>
+                  <div style="height:4px;"></div>
+                  <div class="row">
+                  <div class="col-lg-12">
+                    <div class="input-group">
+                    <span class="input-group-addon">货号</span> 
+                    <input type="text" id="name" name="name" maxlength="10" class="form-control" /></div>
+                  </div>
+                  <input type="hidden" id="sortByWeight" name="sortByWeight" value="0" /> 
+                  <input type="hidden" id="sortByDiscount" name="sortByDiscount" value="1" /> 
+                  <input type="hidden" id="sortByAmount" name="sortByAmount" value="1" /> 
+                  <input type="hidden" id="sortFirst" name="sortFirst" value="amount" /></div>
+                  <div style="height:4px;"></div>
+                  <div class="row">
+                    <div class="col-lg-12 col-md-12">
+                      <div class="input-group">
+                      <span class="input-group-addon">每页显示：</span> 
+                      <select class="form-control" name="pageSize" id="pageSize">
+                        <option value="20">20</option>
+                        <option value="50" selected="selected">50</option>
+                        <option value="100">100</option>
+                      </select></div>
+                    </div>
+                  </div>
+                  <div style="height:4px;"></div>
+                  <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12">
+                    <button type="submit" class="btn btn-primary" id="btnQueryDiamond"> 查询</button> 
+                    <button type="button" class="btn btn-primary" id="btnReset"> 重置</button> 
+                    <button type="button" class="btn btn-primary" id="btnAddDiamond"> 添加</button>
+                    <button type="button" class="btn btn-primary" id="btnEditDiamond"> 修改</button> 
+                    <button type="button" class="btn btn-primary" id="btnSetBuyable"> 上架</button> 
+                    <button type="button" class="btn btn-primary" id="btnRemoveDiamond"> 删除</button></div>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="table-responsive">
+            <table class="table table-bordered table-striped table-condensed table-hover">
+              <thead>
+                <tr>
+                  <th>
+                    <input type="checkbox" />
+                  </th>
+                  <th>货号</th>
+                  <th>形状</th>
+                  <th>重量</th>
+                  <th>颜色</th>
+                  <th>净度</th>
+                  <th>切工</th>
+                  <th>抛光</th>
+                  <th>对称</th>
+                  <th>荧光</th>
+                  <th>尺寸</th>
+                  <th>台面</th>
+                  <th>深度</th>
+                  <th>产地</th>
+                  <th>国际美金</th>
+                  <th>折扣</th>
+                  <th>美元/克拉</th>
+                  <th>RMB/粒</th>
+                  <th>证书类型</th>
+                  <th>证书号</th>
+                  <th>状态</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <input type="checkbox" />
+                  </td>
+                  <td>AZD5410495</td>
+                  <td>梨形</td>
+                  <td>0.32</td>
+                  <td></td>
+                  <td>I1</td>
+                  <td></td>
+                  <td>VeryGood</td>
+                  <td>VeryGood</td>
+                  <td>None</td>
+                  <td>6.24-3.88*2.27</td>
+                  <td>61</td>
+                  <td>58.4</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td>408</td>
+                  <td>852</td>
+                  <td>GIA</td>
+                  <td></td>
+                  <td>正常</td>
+                </tr>
+                <tr>
+                  <td>
+                    <input type="checkbox" />
+                  </td>
+                  <td>AZD5410495</td>
+                  <td>梨形</td>
+                  <td>0.32</td>
+                  <td></td>
+                  <td>I1</td>
+                  <td></td>
+                  <td>VeryGood</td>
+                  <td>VeryGood</td>
+                  <td>None</td>
+                  <td>6.24-3.88*2.27</td>
+                  <td>61</td>
+                  <td>58.4</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td>408</td>
+                  <td>852</td>
+                  <td>GIA</td>
+                  <td></td>
+                  <td>正常</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <nav class="nav text-center">
+          <ul class="pagination pagination-sm">
+            <li class="disabled">
+              <a href="#" aria-label="Previous">
+                <span aria-hidden="true">«</span>
+              </a>
+            </li>
+            <li>
+              <a href="#">1</a>
+            </li>
+            <li>
+              <a href="#">2</a>
+            </li>
+            <li>
+              <a href="#">3</a>
+            </li>
+            <li>
+              <a href="#">4</a>
+            </li>
+            <li>
+              <a href="#">5</a>
+            </li>
+            <li>
+              <a href="#">6</a>
+            </li>
+            <li>
+              <a href="#">7</a>
+            </li>
+            <li>
+              <a href="#">8</a>
+            </li>
+            <li>
+              <a href="#">9</a>
+            </li>
+            <li class="active">
+              <a href="#" aria-label="Next">
+                <span aria-hidden="true">»</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+<!-- Placed at the end of the document so the pages load faster -->
+	
+	  <!-- Bootstrap core JavaScript
+    ================================================== -->
+  <script src="js/thirdparty/jquery/jquery-2.1.1.js"></script> 
+  <script src="js/thirdparty/bootstrap.js"></script> 
+  <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+   
+  <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script> 
+  <script src="js/main.js"></script>
+ </body>
+</html>

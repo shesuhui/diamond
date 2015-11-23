@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+	<!-- 定义模板 -->
+	<definition name="baseLayout" template="/WEB-INF/pages/tiles/tiles-layout.jsp">
+		<put-attribute name="title" value="Template" />
+		<put-attribute name="resource" value="/WEB-INF/pages/tiles/tiles-resource.jsp" />
+		<put-attribute name="jsglobal" value="/WEB-INF/pages/tiles/tiles-jsglobal.jsp" />
+		<put-attribute name="header" value="/WEB-INF/pages/tiles/tiles-header.jsp" />
+		<put-attribute name="topnav" value="/WEB-INF/pages/tiles/tiles-topnav.jsp" />
+		<put-attribute name="content" value="/WEB-INF/pages/tiles/tiles-content.jsp" />
+		<put-attribute name="footer" value="/WEB-INF/pages/tiles/tiles-footer.jsp" />
+	</definition>
+	
+	<!-- Welcome视图 -->
+	
+	<definition name="login-index" extends="baseLayout">
+		<put-attribute name="title" value="钻石商城" />
+		<put-attribute name="header" value="/WEB-INF/pages/tiles/tiles-login-header.jsp" />
+		<put-attribute name="content" value="/WEB-INF/pages/content/login.jsp" />
+	</definition>
+	
+	<definition name="admin-index" extends="baseLayout">
+		<put-attribute name="title" value="钻石商城" />
+		<put-attribute name="header" value="/WEB-INF/pages/tiles/tiles-admin-header.jsp" />
+		<put-attribute name="content" value="/WEB-INF/pages/content/property-index.jsp" />
+	</definition>
+	<definition name="property-index" extends="baseLayout">
+		<put-attribute name="title" value="物业管理" />
+		<put-attribute name="header" value="/WEB-INF/pages/tiles/tiles-property-header.jsp" />
+		<put-attribute name="content" value="/WEB-INF/pages/content/property-index.jsp" />
+	</definition>
+	<definition name="owner-index" extends="baseLayout">
+		<put-attribute name="title" value="公告栏" />
+		<put-attribute name="header" value="/WEB-INF/pages/tiles/tiles-owner-header.jsp" />
+		<put-attribute name="content" value="/WEB-INF/pages/content/notice-list.jsp" />
+	</definition>
+	<definition name="tenement-index" extends="baseLayout">
+		<put-attribute name="title" value="住户还没..." />
+	</definition>
+	<definition name="agency-index" extends="baseLayout">
+		<put-attribute name="title" value="租售管理" />
+		<put-attribute name="header" value="/WEB-INF/pages/tiles/tiles-agency-header.jsp" />
+		<put-attribute name="content" value="/WEB-INF/pages/content/estateagent-sale-add.jsp" />
+	</definition>
+	<definition name="merchant-index" extends="baseLayout">
+		<put-attribute name="title" value="菜单列表" />
+		<put-attribute name="header" value="/WEB-INF/pages/tiles/tiles-merchant-diet-header.jsp" />
+		<put-attribute name="topnav" value="/WEB-INF/pages/content/diet-topnav-merchant.jsp" />
+		<put-attribute name="content" value="/WEB-INF/pages/content/diet-menu.jsp" />
+	</definition>
+	
+	<!-- 个人信息视图定义 -->
+	<definition name="admin-personal-info-index" extends="baseLayout">
+		<put-attribute name="title" value="个人信息" />
+		<put-attribute name="resource" value="/WEB-INF/pages/tiles/tiles-resource-base.jsp" />
+		<put-attribute name="jsglobal" value="/WEB-INF/pages/tiles/tiles-jsglobal.jsp" />
+		<put-attribute name="header" value="/WEB-INF/pages/tiles/tiles-admin-header.jsp" />
+		<put-attribute name="topnav" value="/WEB-INF/pages/content/personal-info-topnav.jsp" />
+		<put-attribute name="content" value="/WEB-INF/pages/content/personal-info-index.jsp" />
+	</definition>
+	<definition name="property-personal-info-index" extends="baseLayout">
+		<put-attribute name="title" value="个人信息" />
+		<put-attribute name="resource" value="/WEB-INF/pages/tiles/tiles-resource-base.jsp" />
+		<put-attribute name="jsglobal" value="/WEB-INF/pages/tiles/tiles-jsglobal.jsp" />
+		<put-attribute name="header" value="/WEB-INF/pages/tiles/tiles-property-header.jsp" />
+		<put-attribute name="topnav" value="/WEB-INF/pages/content/personal-info-topnav.jsp" />
+		<put-attribute name="content" value="/WEB-INF/pages/content/personal-info-index.jsp" />
+	</definition>
+	<definition name="owner-personal-info-index" extends="baseLayout">
+		<put-attribute name="title" value="个人信息" />
+		<put-attribute name="resource" value="/WEB-INF/pages/tiles/tiles-resource-base.jsp" />
+		<put-attribute name="jsglobal" value="/WEB-INF/pages/tiles/tiles-jsglobal.jsp" />
+		<put-attribute name="header" value="/WEB-INF/pages/tiles/tiles-owner-header.jsp" />
+		<put-attribute name="topnav" value="/WEB-INF/pages/content/personal-info-topnav.jsp" />
+		<put-attribute name="content" value="/WEB-INF/pages/content/personal-info-index.jsp" />
+	</definition>
+	<definition name="agency-personal-info-index" extends="baseLayout">
+		<put-attribute name="title" value="个人信息" />
+		<put-attribute name="resource" value="/WEB-INF/pages/tiles/tiles-resource-base.jsp" />
+		<put-attribute name="jsglobal" value="/WEB-INF/pages/tiles/tiles-jsglobal.jsp" />
+		<put-attribute name="header" value="/WEB-INF/pages/tiles/tiles-agency-header.jsp" />
+		<put-attribute name="topnav" value="/WEB-INF/pages/content/personal-info-topnav.jsp" />
+		<put-attribute name="content" value="/WEB-INF/pages/content/personal-info-index.jsp" />
+	</definition>
+	<definition name="merchant-personal-info-index" extends="baseLayout">
+		<put-attribute name="title" value="个人信息" />
+		<put-attribute name="resource" value="/WEB-INF/pages/tiles/tiles-resource-base.jsp" />
+		<put-attribute name="jsglobal" value="/WEB-INF/pages/tiles/tiles-jsglobal.jsp" />
+		<put-attribute name="header" value="/WEB-INF/pages/tiles/tiles-merchant-header.jsp" />
+		<put-attribute name="topnav" value="/WEB-INF/pages/content/personal-info-topnav.jsp" />
+		<put-attribute name="content" value="/WEB-INF/pages/content/personal-info-index.jsp" />
+	</definition>
+	<definition name="tenement-personal-info-index" extends="baseLayout">
+		<put-attribute name="title" value="个人信息" />
+		<put-attribute name="resource" value="/WEB-INF/pages/tiles/tiles-resource-base.jsp" />
+		<put-attribute name="jsglobal" value="/WEB-INF/pages/tiles/tiles-jsglobal.jsp" />
+		<put-attribute name="header" value="/WEB-INF/pages/tiles/tiles-tenement-header.jsp" />
+		<put-attribute name="topnav" value="/WEB-INF/pages/content/personal-info-topnav.jsp" />
+		<put-attribute name="content" value="/WEB-INF/pages/content/personal-info-index.jsp" />
+	</definition>
+	
+	<!-- Building相关视图定义 -->
+	<definition name="building-index" extends="baseLayout">
+		<put-attribute name="title" value="楼房列表" />
+		<put-attribute name="header" value="/WEB-INF/pages/tiles/tiles-property-header.jsp" />
+		<put-attribute name="resource" value="/WEB-INF/pages/tiles/tiles-resource-base.jsp" />
+		<put-attribute name="jsglobal" value="/WEB-INF/pages/tiles/tiles-jsglobal.jsp" />
+		<put-attribute name="topnav" value="/WEB-INF/pages/content/property-building-topnav.jsp" />
+		<put-attribute name="content" value="/WEB-INF/pages/content/building-index.jsp" />
+	</definition>
+	
+	<!-- 报修以及处理的相关视图定义 -->
+	<!-- 用户报修添加操作视图 -->
+	<definition name="owner-fault-add" extends="baseLayout">
+		<put-attribute name="title" value="报修添加" />
+		<put-attribute name="header" value="/WEB-INF/pages/tiles/tiles-owner-header.jsp" />
+		<put-attribute name="topnav" value="/WEB-INF/pages/content/owner-fault-topnav.jsp" />
+		<put-attribute name="content" value="/WEB-INF/pages/content/owner-fault-add.jsp" />
+	</definition>
+	
+	<!-- 用户报修列表视图 -->
+	<definition name="owner-fault-list" extends="baseLayout">
+		<put-attribute name="title" value="报修列表" />
+		<put-attribute name="header" value="/WEB-INF/pages/tiles/tiles-owner-header.jsp" />
+		<put-attribute name="topnav" value="/WEB-INF/pages/content/owner-fault-topnav.jsp" />
+		<put-attribute name="content" value="/WEB-INF/pages/content/fault-list.jsp" />
+	</definition>
+	
+	<!-- 物业报修列表视图 -->
+	<definition name="property-fault-list" extends="baseLayout">
+		<put-attribute name="title" value="报修列表" />
+		<put-attribute name="header" value="/WEB-INF/pages/tiles/tiles-property-header.jsp" />
+		<put-attribute name="topnav" value="/WEB-INF/pages/content/property-fault-topnav.jsp" />
+		<put-attribute name="content" value="/WEB-INF/pages/content/fault-list.jsp" />
+	</definition>
+	
+	<!-- 用户相关视图定义 -->
+	<definition name="user-index" extends="baseLayout">
+		<put-attribute name="title" value="用户列表" />
+		<put-attribute name="resource" value="/WEB-INF/pages/tiles/tiles-resource-base.jsp" />
+		<put-attribute name="jsglobal" value="/WEB-INF/pages/tiles/tiles-jsglobal.jsp" />
+		<put-attribute name="header" value="/WEB-INF/pages/tiles/tiles-property-header.jsp" />
+		<put-attribute name="topnav" value="/WEB-INF/pages/content/user-topnav.jsp" />
+		<put-attribute name="content" value="/WEB-INF/pages/content/user-index.jsp" />
+	</definition>
+	
+	<!-- 公告通知相关视图定义 -->
+	<!-- 物业人员发布、修改、删除公告列表的视图 -->
+	<definition name="property-notice-handler" extends="baseLayout">
+		<put-attribute name="title" value="公告列表" />
+		<put-attribute name="header" value="/WEB-INF/pages/tiles/tiles-property-header.jsp" />
+		<put-attribute name="topnav" value="/WEB-INF/pages/content/notice-topnav.jsp" />
+		<put-attribute name="content" value="/WEB-INF/pages/content/property-notice-list.jsp" />
+	</definition>
+	
+	<definition name="notice-add" extends="baseLayout">
+		<put-attribute name="title" value="添加公告" />
+		<put-attribute name="header" value="/WEB-INF/pages/tiles/tiles-property-header.jsp" />
+		<put-attribute name="topnav" value="/WEB-INF/pages/content/notice-topnav.jsp" />
+		<put-attribute name="content" value="/WEB-INF/pages/content/notice-add.jsp" />
+	</definition>
+	
+	<!-- 用户的公告栏视图 -->
+	<definition name="owner-notice-list" extends="baseLayout">
+		<put-attribute name="title" value="公告栏" />
+		<put-attribute name="header" value="/WEB-INF/pages/tiles/tiles-owner-header.jsp" />
+		<put-attribute name="content" value="/WEB-INF/pages/content/notice-list.jsp" />
+	</definition>
+	
+	<!-- 物业人员的公告栏视图 -->
+	<definition name="property-notice-list" extends="baseLayout">
+		<put-attribute name="title" value="公告栏" />
+		<put-attribute name="header" value="/WEB-INF/pages/tiles/tiles-property-header.jsp" />
+		<put-attribute name="topnav" value="/WEB-INF/pages/content/notice-topnav.jsp" />
+		<put-attribute name="content" value="/WEB-INF/pages/content/notice-list.jsp" />
+	</definition>
+	
+		<!-- 物业人员的修改公告列表视图 -->
+	<definition name="property-notice-update" extends="baseLayout">
+		<put-attribute name="title" value="公告栏" />
+		<put-attribute name="header" value="/WEB-INF/pages/tiles/tiles-property-header.jsp" />
+		<put-attribute name="topnav" value="/WEB-INF/pages/content/notice-topnav.jsp" />
+		<put-attribute name="content" value="/WEB-INF/pages/content/property-notice-update.jsp" />
+	</definition>
+	
+	<!-- 物业人员的投诉建议视图 -->
+	<definition name="complaint-admin-index" extends="baseLayout">
+		<put-attribute name="title" value="投诉建议" />
+		<put-attribute name="header" value="/WEB-INF/pages/tiles/tiles-property-header.jsp" />
+		<put-attribute name="topnav" value="/WEB-INF/pages/content/property-complaint-topnav.jsp" />
+		<put-attribute name="content" value="/WEB-INF/pages/content/complaint-list.jsp" />
+	</definition>
+	
+	<!-- 普通人员的投诉建议视图 -->
+	<definition name="complaint-index" extends="baseLayout">
+		<put-attribute name="title" value="投诉建议" />
+		<put-attribute name="header" value="/WEB-INF/pages/tiles/tiles-owner-header.jsp" />
+		<put-attribute name="topnav" value="/WEB-INF/pages/content/property-complaint-topnav.jsp" />
+		<put-attribute name="content" value="/WEB-INF/pages/content/complaint-list.jsp" />
+	</definition>
+	
+	<!-- 临时视图 -->
+	<definition name="property-mt-show" extends="baseLayout">
+		<put-attribute name="title" value="网站建设中..." />
+		<put-attribute name="header" value="/WEB-INF/pages/tiles/tiles-property-header.jsp" />
+		<put-attribute name="content" value="/WEB-INF/pages/content/mt-show.jsp" />
+	</definition>
+	
+	<definition name="owner-mt-show" extends="baseLayout">
+		<put-attribute name="title" value="网站建设中..." />
+		<put-attribute name="header" value="/WEB-INF/pages/tiles/tiles-owner-header.jsp" />
+		<put-attribute name="content" value="/WEB-INF/pages/content/mt-show.jsp" />
+	</definition>
+	
+	<!-- 费用管理 -->
+	<definition name="fee-index" extends="baseLayout">
+		<put-attribute name="title" value="费用管理" />
+		<put-attribute name="header" value="/WEB-INF/pages/tiles/tiles-property-header.jsp" />
+		<put-attribute name="topnav" value="/WEB-INF/pages/content/fee-topnav.jsp" />
+		<put-attribute name="content" value="/WEB-INF/pages/content/fee-list.jsp" />
+	</definition>
+	
+	<!-- 业主房屋租售列表 -->
+	<definition name="owner-renter-index" extends="baseLayout">
+		<put-attribute name="title" value="房屋租售" />
+		<put-attribute name="header" value="/WEB-INF/pages/tiles/tiles-property-header.jsp" />
+		<put-attribute name="topnav" value="/WEB-INF/pages/content/owner-rental-sale-topnav.jsp" />
+		<put-attribute name="content" value="/WEB-INF/pages/content/owner-rental-sale-list.jsp" />
+	</definition>
+	
+	<definition name="owner-renter-detail" extends="baseLayout">
+		<put-attribute name="title" value="租售详情" />
+		<put-attribute name="header" value="/WEB-INF/pages/tiles/tiles-property-header.jsp" />
+		<put-attribute name="topnav" value="/WEB-INF/pages/content/owner-rental-sale-topnav.jsp" />
+		<put-attribute name="content" value="/WEB-INF/pages/content/owner-rental-sale-detail.jsp" />
+	</definition>
+	
+	<definition name="owner-renter-add" extends="baseLayout">
+		<put-attribute name="title" value="租售详情" />
+		<put-attribute name="header" value="/WEB-INF/pages/tiles/tiles-property-header.jsp" />
+		<put-attribute name="topnav" value="/WEB-INF/pages/content/owner-rental-sale-topnav.jsp" />
+		<put-attribute name="content" value="/WEB-INF/pages/content/owner-rental-sale-add.jsp" />
+	</definition>
+	
+	<definition name="owner-renter-edit" extends="baseLayout">
+		<put-attribute name="title" value="租售详情" />
+		<put-attribute name="header" value="/WEB-INF/pages/tiles/tiles-property-header.jsp" />
+		<put-attribute name="topnav" value="/WEB-INF/pages/content/owner-rental-sale-topnav.jsp" />
+		<put-attribute name="content" value="/WEB-INF/pages/content/owner-rental-sale-edit.jsp" />
+	</definition>
+	
+	<!-- 中介视图 -->
+	<definition name="estateagent-renter-list" extends="baseLayout">
+		<put-attribute name="title" value="租售详情" />
+		<put-attribute name="content" value="/WEB-INF/pages/content/estateagent-renter-list.jsp" />
+	</definition>
+	<definition name="estateagent-sale-add" extends="baseLayout">
+		<put-attribute name="title" value="售房" />
+		<put-attribute name="content" value="/WEB-INF/pages/content/estateagent-sale-add.jsp" />
+	</definition>
+	<definition name="housingestate-list" extends="baseLayout">
+		<put-attribute name="title" value="售房" />
+		<put-attribute name="header" value="/WEB-INF/pages/tiles/tiles-agency-header.jsp" />
+		<put-attribute name="topnav" value="/WEB-INF/pages/content/housingestate-topnav.jsp" />
+		<put-attribute name="content" value="/WEB-INF/pages/content/housingestate-list.jsp" />
+	</definition>
+	<definition name="housingestate-add" extends="baseLayout">
+		<put-attribute name="title" value="售房" />
+		<put-attribute name="header" value="/WEB-INF/pages/tiles/tiles-agency-header.jsp" />
+		<put-attribute name="topnav" value="/WEB-INF/pages/content/housingestate-topnav.jsp" />
+		<put-attribute name="content" value="/WEB-INF/pages/content/housingestate-add.jsp" />
+	</definition>
+	<definition name="housingestate-edit" extends="baseLayout">
+		<put-attribute name="title" value="售房" />
+		<put-attribute name="header" value="/WEB-INF/pages/tiles/tiles-agency-header.jsp" />
+		<put-attribute name="topnav" value="/WEB-INF/pages/content/housingestate-topnav.jsp" />
+		<put-attribute name="content" value="/WEB-INF/pages/content/housingestate-edit.jsp" />
+	</definition>
+	<definition name="housingestate-index" extends="housingestate-add"></definition>
+		
+	<!-- 餐饮商家管理 -->
+	<definition name="diet-index-owner" extends="baseLayout">
+		<put-attribute name="title" value="餐厅信息" />
+		<put-attribute name="header" value="/WEB-INF/pages/tiles/tiles-owner-header.jsp" />
+		<put-attribute name="topnav" value="/WEB-INF/pages/content/diet-topnav.jsp" />
+		<put-attribute name="content" value="/WEB-INF/pages/content/diet-index.jsp" />
+	</definition>
+	<definition name="diet-index-property" extends="baseLayout">
+		<put-attribute name="title" value="餐饮信息" />
+		<put-attribute name="header" value="/WEB-INF/pages/tiles/tiles-property-header.jsp" />
+		<put-attribute name="topnav" value="/WEB-INF/pages/content/diet-topnav.jsp" />
+		<put-attribute name="content" value="/WEB-INF/pages/content/diet-index.jsp" />
+	</definition>
+	<definition name="diet-menu-owner" extends="baseLayout">
+		<put-attribute name="title" value="欢迎点餐" />
+		<put-attribute name="header" value="/WEB-INF/pages/tiles/tiles-owner-header.jsp" />
+		<put-attribute name="topnav" value="/WEB-INF/pages/content/diet-topnav.jsp" />
+		<put-attribute name="content" value="/WEB-INF/pages/content/diet-menu.jsp" />
+	</definition>
+	<definition name="diet-menu-merchant" extends="baseLayout">
+		<put-attribute name="title" value="菜单列表" />
+		<put-attribute name="header" value="/WEB-INF/pages/tiles/tiles-merchant-header.jsp" />
+		<put-attribute name="topnav" value="/WEB-INF/pages/content/diet-topnav-merchant.jsp" />
+		<put-attribute name="content" value="/WEB-INF/pages/content/diet-menu.jsp" />
+	</definition>
+	<definition name="diet-menu-property" extends="baseLayout">
+		<put-attribute name="title" value="菜单列表" />
+		<put-attribute name="header" value="/WEB-INF/pages/tiles/tiles-property-header.jsp" />
+		<put-attribute name="topnav" value="/WEB-INF/pages/content/diet-topnav.jsp" />
+		<put-attribute name="content" value="/WEB-INF/pages/content/diet-menu.jsp" />
+	</definition>
+	<definition name="diet-merchant" extends="baseLayout">
+		<put-attribute name="title" value="菜单列表" />
+		<put-attribute name="header" value="/WEB-INF/pages/tiles/tiles-merchant-header.jsp" />
+		<put-attribute name="topnav" value="/WEB-INF/pages/content/diet-topnav-merchant.jsp" />
+		<put-attribute name="content" value="/WEB-INF/pages/content/diet-merchant.jsp" />
+	</definition>
+	
+</tiles-definitions>

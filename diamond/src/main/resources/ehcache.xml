@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="ehcache.xsd" updateCheck="false"
+	monitoring="autodetect" dynamicConfig="false">
+
+	<!-- 文件缓存目录 -->
+	<diskStore path="java.io.tmpdir" />
+
+	<!--cache Distribute Config -->
+	<cacheManagerPeerProviderFactory
+		class="net.sf.ehcache.distribution.RMICacheManagerPeerProviderFactory"
+		properties="peerDiscovery=manual,hostName=localhost, timeToLive=1" />
+
+	<cacheManagerPeerListenerFactory
+		class="net.sf.ehcache.distribution.RMICacheManagerPeerListenerFactory"
+		properties="socketTimeoutMillis=120000,hostName=localhost,port=2080" />
+
+	<defaultCache eternal="false" maxElementsInMemory="1000"
+		overflowToDisk="false" diskPersistent="false" timeToIdleSeconds="0"
+		timeToLiveSeconds="600" memoryStoreEvictionPolicy="LRU" />
+
+	<cache name="processDefinitionCache" eternal="false" overflowToDisk="false"
+		timeToIdleSeconds="0" timeToLiveSeconds="0" diskPersistent="false"
+		  memoryStoreEvictionPolicy="LRU">
+		<cacheEventListenerFactory
+			class="net.sf.ehcache.distribution.RMICacheReplicatorFactory" />
+	</cache>
+
+	<cache name="processDefinitionItemCache" eternal="false" overflowToDisk="false"
+		timeToIdleSeconds="0" timeToLiveSeconds="0" diskPersistent="false"
+		 memoryStoreEvictionPolicy="LRU">
+	</cache>
+
+	<cache name="actionFormCache" eternal="false" overflowToDisk="false"
+		timeToIdleSeconds="0" timeToLiveSeconds="0" diskPersistent="false"
+		  memoryStoreEvictionPolicy="LRU">
+		<cacheEventListenerFactory
+			class="net.sf.ehcache.distribution.RMICacheReplicatorFactory" />
+	</cache>
+</ehcache>
