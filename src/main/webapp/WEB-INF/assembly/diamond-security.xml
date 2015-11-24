@@ -41,13 +41,14 @@
 			</value>
 		</property>
 	</bean>
-	<bean id="formAuthenticationFilter"
 	
-		class="org.apache.shiro.web.filter.authc.FormAuthenticationFilter" />
+	<bean id="formAuthenticationFilter"	class="org.apache.shiro.web.filter.authc.FormAuthenticationFilter" />
+	
+	
 	<!-- SecurityManager shiro的安全管理器 -->
 	<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
 		<property name="realm" ref="loginRealm" />
-		<property name="cacheManager" ref="ehcacheManager" />
+		<property name="cacheManager" ref="shiroEhcacheManager" />
 	</bean>
 
 	<bean id="loginRealm" class="com.shesuhui.diamond.controller.LoginActionRealm">

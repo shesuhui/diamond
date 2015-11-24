@@ -25,19 +25,22 @@
 	<context:annotation-config />
 	
 	<!-- cacheManager工厂类 -->
-	<!--bean id="cacheManagerFactory"
+	<bean id="cacheManagerFactory"
 		class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean"
 		p:configLocation="classpath:ehcache.xml" p:shared="false" />
--->
+
 	<!-- 声明cacheManager -->
-	<!--bean id="ehcacheManager" class="org.springframework.cache.ehcache.EhCacheCacheManager"
+	<bean id="ehcacheManager" class="org.springframework.cache.ehcache.EhCacheCacheManager"
 		p:cacheManager-ref="cacheManagerFactory" />
- -->
+		
+	<bean id="shiroEhcacheManager" class="org.apache.shiro.cache.ehcache.EhCacheManager"
+		p:cacheManager-ref="cacheManagerFactory" />
+		
 	<aop:aspectj-autoproxy />
 
 	<import resource="diamond-datasource.xml" />
 	<import resource="diamond-mybatis.xml" />
-	<!--import resource="diamond-security.xml" /-->
+	<import resource="diamond-security.xml"/>
 	
 	
 
