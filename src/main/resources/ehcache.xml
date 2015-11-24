@@ -16,25 +16,25 @@
 		class="net.sf.ehcache.distribution.RMICacheManagerPeerListenerFactory"
 		properties="socketTimeoutMillis=120000,hostName=localhost,port=2080" />
 
-	<defaultCache eternal="false" maxElementsInMemory="1000"
-		overflowToDisk="false" diskPersistent="false" timeToIdleSeconds="0"
+	<defaultCache eternal="false" maxElementsInMemory="500"
+		overflowToDisk="true" diskPersistent="false" timeToIdleSeconds="0"
 		timeToLiveSeconds="600" memoryStoreEvictionPolicy="LRU" />
 
 	<cache name="processDefinitionCache" eternal="false" overflowToDisk="false"
 		timeToIdleSeconds="0" timeToLiveSeconds="0" diskPersistent="false"
-		  memoryStoreEvictionPolicy="LRU">
+		  memoryStoreEvictionPolicy="LRU" maxBytesLocalHeap="30M">
 		<cacheEventListenerFactory
 			class="net.sf.ehcache.distribution.RMICacheReplicatorFactory" />
 	</cache>
 
 	<cache name="processDefinitionItemCache" eternal="false" overflowToDisk="false"
 		timeToIdleSeconds="0" timeToLiveSeconds="0" diskPersistent="false"
-		 memoryStoreEvictionPolicy="LRU">
+		 memoryStoreEvictionPolicy="LRU" maxBytesLocalHeap="30M">
 	</cache>
 
 	<cache name="actionFormCache" eternal="false" overflowToDisk="false"
 		timeToIdleSeconds="0" timeToLiveSeconds="0" diskPersistent="false"
-		  memoryStoreEvictionPolicy="LRU">
+		  memoryStoreEvictionPolicy="LRU" maxBytesLocalHeap="30M">
 		<cacheEventListenerFactory
 			class="net.sf.ehcache.distribution.RMICacheReplicatorFactory" />
 	</cache>

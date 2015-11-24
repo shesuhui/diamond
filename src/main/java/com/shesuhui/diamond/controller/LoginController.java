@@ -21,6 +21,7 @@ import com.shesuhui.diamond.model.User;
 import com.shesuhui.diamond.service.LoginService;
 import com.shesuhui.diamond.util.Constants;
 
+
 /**
  * 
  * <pre>
@@ -59,7 +60,7 @@ public class LoginController {
         Subject subject = SecurityUtils.getSubject();
         String url = "/index";
         if (session == null || session.getAttribute(Constants.LOGIN_USER_SESSINON_KEY) == null) {
-            String username = request.getParameter("username");
+            String username = request.getParameter("loginId");
             String password = request.getParameter("password");
             if (StringUtils.isBlank(username) || StringUtils.isBlank(password)) {
                 msg = "登录名或密码不能为空";
