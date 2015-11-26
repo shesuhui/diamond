@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import com.shesuhui.diamond.model.User;
 
 @Repository
-public interface UserMapper {
+public interface UserDao {
 
 	String getPassword(@Param(value = "id") String id);
 

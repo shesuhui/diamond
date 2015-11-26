@@ -8,7 +8,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.shesuhui.diamond.dao.UserMapper;
+import com.shesuhui.diamond.dao.UserDao;
 import com.shesuhui.diamond.exception.DiamondException;
 import com.shesuhui.diamond.model.User;
 import com.shesuhui.diamond.service.RoleService;
@@ -22,7 +22,7 @@ public class UserServiceImpl implements UserService {
 	private RoleService roleService;
 
 	@Resource
-	private UserMapper userMapper;
+	private UserDao userMapper;
 
 	/**
 	 * 添加用户时, 关联角色和房间
