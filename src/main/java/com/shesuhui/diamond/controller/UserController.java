@@ -24,6 +24,7 @@ import org.apache.commons.lang3.time.DateFormatUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -50,11 +51,11 @@ import com.shesuhui.diamond.vo.UserVo;
 public class UserController {
     private static Logger log = LoggerFactory.getLogger(UserController.class);
 
-    @Resource
+    @Autowired
     private UserService userService;
-    @Resource
+    @Autowired
     private RoleService roleService;
-    @Resource
+    @Autowired
     private LoginService loginService;
 
     /**
@@ -226,7 +227,7 @@ public class UserController {
              User user=null;   	
             this.userService.updateUser(user, roleNamesList, roomIdList);
             // 更新session
-            User newUser = this.loginService.getUserByLoginName(user.getLoginName());
+            User newUser = this.loginService.getUserByLoginName(user.getLoginId());
             request.getSession(true).setAttribute(Constants.LOGIN_USER_SESSINON_KEY, newUser);
             
             User resultUser = userService.getUserById(user.getId());
@@ -279,7 +280,7 @@ public class UserController {
     String id) {
         Map<String, Object> resultMap = new HashMap<String, Object>();
 
-        try {
+       /* try {
             User user = userService.getUserById(id);
             // 管理员不能被删除
             if (null != user && !Constants.USER_ADMIN.equals(user.getLoginName())) {
@@ -294,7 +295,7 @@ public class UserController {
             resultMap.put("msg", "删除用户信息失败");
             log.error("删除用户信息失败", e);
         }
-
+*/
         return resultMap;
     }
 

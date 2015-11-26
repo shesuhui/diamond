@@ -20,7 +20,7 @@ public interface UserService {
 	 *            不能为空
 	 * @return
 	 */
-	public User getUserById(String uid);
+	public User getUserById(Integer uid);
 
 	/**
 	 * 根据用户登录名获得用户信息
@@ -49,7 +49,6 @@ public interface UserService {
 	 */
 	public void updatePersonal(User user);
 
-	public void deleteUser(String id);
 
 	/**
 	 * 供用户修改密码

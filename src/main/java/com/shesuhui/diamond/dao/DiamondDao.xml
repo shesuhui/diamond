@@ -1,0 +1,595 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.shesuhui.diamond.dao.DiamondDao">
+	<resultMap type="Diamond" id="DiamondResult">
+		<result property="id" column="id" />
+		<result property="name" column="name" />
+		<result property="image" column="image" />
+		<result property="locality" column="locality" />
+		<result property="shape" column="shape" />
+		<result property="color" column="color" />
+		<result property="clarity" column="clarity" />
+		<result property="cut" column="cut" />
+		<result property="polish" column="polish" />
+		<result property="symm" column="symm" />
+		<result property="fluor" column="fluor" />
+		<result property="authenticator" column="authenticator" />
+		<result property="intensity" column="intensity" />
+		<result property="weight" column="weight" />
+		<result property="discount" column="discount" />
+		<result property="price" column="price" />
+		<result property="cert" column="cert" />
+		<result property="depth" column="depth" />
+		<result property="size" column="size" />
+		<result property="taple" column="taple" />
+		<result property="remark" column="remark" />
+		<result property="multicolour" column="multicolour" />
+		<result property="status" column="status" />
+		<result property="createTime" column="create_time" />
+		<result property="creatorId" column="creator_id" />
+		<result property="modifyTime" column="modify_time" />
+		<result property="modifierId" column="modifier_id" />
+		<result property="supplierId" column="supplier_id" />
+		<result property="supplierAdding" column="s_adding" />
+		<result property="supplierDiscount" column="supplier_discount" />
+		<result property="supplierPrice" column="supplier_price" />
+	</resultMap>
+
+	<resultMap type="Diamond" id="DiamondDetailResult">
+		<result property="id" column="id" />
+		<result property="name" column="name" />
+		<result property="image" column="image" />
+		<result property="locality" column="locality" />
+		<result property="shape" column="shape" />
+		<result property="color" column="color" />
+		<result property="clarity" column="clarity" />
+		<result property="cut" column="cut" />
+		<result property="polish" column="polish" />
+		<result property="symm" column="symm" />
+		<result property="fluor" column="fluor" />
+		<result property="authenticator" column="authenticator" />
+		<result property="intensity" column="intensity" />
+		<result property="weight" column="weight" />
+		<result property="discount" column="discount" />
+		<result property="price" column="price" />
+		<result property="cert" column="cert" />
+		<result property="depth" column="depth" />
+		<result property="size" column="size" />
+		<result property="taple" column="taple" />
+		<result property="remark" column="remark" />
+		<result property="multicolour" column="multicolour" />
+		<result property="status" column="status" />
+		<result property="createTime" column="create_time" />
+		<result property="creatorId" column="creator_id" />
+		<result property="modifyTime" column="modify_time" />
+		<result property="modifierId" column="modifier_id" />
+		<result property="supplierId" column="supplier_id" />
+		<result property="supplierAdding" column="s_adding" />
+		<result property="supplierDiscount" column="supplier_discount" />
+		<result property="supplierPrice" column="supplier_price" />
+		<association property="supplier" column="supplier_id"
+			select="findSupplierById" />
+	</resultMap>
+
+	<resultMap type="DiamondSupplier" id="DiamondSupplierResult">
+		<id property="id" column="id" />
+		<result property="diamondId" column="diamond_id" />
+		<result property="supplierId" column="supplier_id" />
+		<result property="price" column="price" />
+		<result property="discount" column="discount" />
+		<association property="supplier" column="supplier_id"
+			select="findSupplierById" />
+	</resultMap>
+
+	<resultMap type="Supplier" id="SupplierResult">
+		<id property="id" column="id" />
+		<result property="name" column="name" />
+		<result property="num" column="num" />
+		<result property="linkman" column="linkman" />
+		<result property="status" column="status" />
+		<result property="phone" column="phone" />
+		<result property="fax" column="fax" />
+		<result property="address" column="address" />
+		<result property="email" column="email" />
+		<result property="adding" column="adding" />
+		<result property="skype" column="skype" />
+		<result property="hkPhone" column="hkphone" />
+	</resultMap>
+
+	<select id="findDiamondSupplierByDiamondId" resultMap="DiamondSupplierResult">
+	<![CDATA[    
+select id,diamond_id,supplier_id,price,discount from t_diamond_supplier
+ where diamond_id=#{id}
+]]>
+	</select>
+
+	<select id="findSupplierById" resultMap="SupplierResult">
+	<![CDATA[    
+select id,num,name,linkman,status,adding,skype,hkphone,
+phone,email,fax,address from t_supplier  
+where id=#{id}
+]]>
+	</select>
+
+	<sql id="selectDiamondCondition">
+		<where>
+			(d.status=0 or d.status=1)
+			<if test="diamondQueryParam!=null">
+				<if test="diamondQueryParam.name !=null and diamondQueryParam.name !=''"><![CDATA[  and d.name like CONCAT('%',trim(#{diamondQueryParam.name}),'%' )]]>
+				</if>
+
+				<choose>
+					<when test="diamondQueryParam.shape !=null">
+				<![CDATA[  and (]]>
+						<foreach collection="diamondQueryParam.shape" item="item"
+							index="index" open="(" close=")" separator="or">
+							d.shape like
+							CONCAT('%',#{item},'%')
+						</foreach>
+						<if test="diamondQueryParam.containOtherShape==1">
+				   <![CDATA[  or (d.shape not like '%round%' and d.shape not like '%pear%' 
+				 and  d.shape not like '%Princess%' and d.shape not like '%Marquise%'
+				  and d.shape not like '%Emerald%' and d.shape not like '%Radiant%'
+				  and d.shape not like '%Trilliant%' and d.shape not like '%Heart%'
+				  and d.shape not like '%Cushion%' and d.shape not like '%Oval%'  
+				   )
+				   
+				   ]]>
+						</if>
+				  <![CDATA[)]]>
+					</when>
+					<otherwise>
+						<if test="diamondQueryParam.containOtherShape==1">
+				   <![CDATA[  and (d.shape not like '%round%' and d.shape not like '%pear%'
+				 and  d.shape not like '%Princess%' and d.shape not like '%Marquise%'
+				 and   d.shape not like '%Emerald%' and d.shape not like '%Radiant%'
+				 and  d.shape not like '%Trilliant%' and d.shape not like '%Heart%'
+				 and  d.shape not like '%Cushion%' and d.shape not like '%Oval%'  
+				   )]]>
+						</if>
+				  <![CDATA[]]>
+					</otherwise>
+				</choose>
+
+
+				<choose>
+					<when test="diamondQueryParam.color !=null">
+				<![CDATA[  and (]]>
+						<foreach collection="diamondQueryParam.color" item="item"
+							index="index" open="(" close=")" separator="or">
+							d.color=#{item}
+						</foreach>
+						<if test="diamondQueryParam.multicolour==1">
+				   <![CDATA[  or d.multicolour=1
+				   ]]>
+						</if>
+				  <![CDATA[)]]>
+					</when>
+					<otherwise>
+						<if test="diamondQueryParam.multicolour==1">
+				   <![CDATA[  and d.multicolour=1 ]]>
+						</if>
+				  <![CDATA[]]>
+					</otherwise>
+				</choose>
+
+				<if test="diamondQueryParam.clarity !=null"><![CDATA[  and d.clarity in ]]>
+					<foreach collection="diamondQueryParam.clarity" item="item"
+						index="index" open="(" close=")" separator=",">
+						#{item}
+					</foreach>
+				</if>
+
+				<choose>
+					<when test="diamondQueryParam.cut !=null">
+				<![CDATA[  and (d.cut in ]]>
+						<foreach collection="diamondQueryParam.cut" item="item"
+							index="index" open="(" close=")" separator=",">
+							#{item}
+						</foreach>
+						<if test="diamondQueryParam.containNullCut==1">
+				   <![CDATA[  or d.cut is null or d.cut='none' or d.cut='' ]]>
+						</if>
+				  <![CDATA[)]]>
+					</when>
+					<otherwise>
+						<if test="diamondQueryParam.containNullCut==1">
+				   <![CDATA[  and (d.cut is null or d.cut='none' or d.cut='' )]]>
+						</if>
+				  <![CDATA[]]>
+					</otherwise>
+				</choose>
+
+				<if test="diamondQueryParam.polish !=null">
+					<![CDATA[  and d.polish in ]]>
+					<foreach collection="diamondQueryParam.polish" item="item"
+						index="index" open="(" close=")" separator=",">
+						#{item}
+					</foreach>
+				</if>
+				<if test="diamondQueryParam.symm !=null">
+				<![CDATA[  and d.symm in ]]>
+					<foreach collection="diamondQueryParam.symm" item="item"
+						index="index" open="(" close=")" separator=",">
+						#{item}
+					</foreach>
+				</if>
+				<if test="diamondQueryParam.fluor !=null">
+					<![CDATA[  and d.fluor in]]>
+					<foreach collection="diamondQueryParam.fluor" item="item"
+						index="index" open="(" close=")" separator=",">
+						#{item}
+					</foreach>
+				</if>
+				<if test="diamondQueryParam.authenticator!=null">
+					<![CDATA[  and d.authenticator in ]]>
+					<foreach collection="diamondQueryParam.authenticator" item="item"
+						index="index" open="(" close=")" separator=",">
+						#{item}
+					</foreach>
+				</if>
+				<if
+					test="diamondQueryParam.minQueryWeight!=null and diamondQueryParam.minQueryWeight !=''">
+					<![CDATA[  and d.weight>=#{diamondQueryParam.minQueryWeight}]]>
+				</if>
+				<if
+					test="diamondQueryParam.maxQueryWeight!=null and diamondQueryParam.maxQueryWeight !=''">
+					<![CDATA[  and d.weight<=#{diamondQueryParam.maxQueryWeight}]]>
+				</if>
+			</if>
+		</where>
+	</sql>
+
+	<select id="selectDiamondPageList" resultMap="DiamondResult">
+	<![CDATA[    
+	select d.id,d.name,d.image,d.locality,d.shape,d.color,d.clarity,d.cut,d.polish,d.symm,d.fluor,d.authenticator,d.weight,d.discount,d.price,d.cert,
+  d.remark,d.status,d.creator_id,d.modifier_id,d.multicolour,
+  d.depth,d.size,d.taple,d.supplier_id,d.supplier_discount,d.supplier_price,s.adding s_adding
+	 from t_diamond d inner join t_supplier s on d.supplier_id=s.id]]>
+
+		<include refid="selectDiamondCondition" />
+		<if test="diamondQueryParam!=null">
+			<if
+				test='diamondQueryParam.sortByWeight!="0"||diamondQueryParam.sortByDiscount!="0"||diamondQueryParam.sortByAmount!="0"'>
+			  <![CDATA[order by ]]>
+			</if>
+			<if test='"weight"==diamondQueryParam.sortFirst'>
+				<if test='"1"==diamondQueryParam.sortByWeight'><![CDATA[ d.weight asc ]]></if>
+				<if test='"2"==diamondQueryParam.sortByWeight'><![CDATA[ d.weight desc  ]]></if>
+				<if test='"1"==diamondQueryParam.sortByAmount'><![CDATA[ ,((IFNULL(d.supplier_discount,100)+IFNULL(s.adding,0))*IFNULL(d.supplier_price,0)*IFNULL(d.weight,0)) asc  ]]></if>
+				<if test='"2"==diamondQueryParam.sortByAmount'><![CDATA[ ,((IFNULL(d.supplier_discount,100)+IFNULL(s.adding,0))*IFNULL(d.supplier_price,0)*IFNULL(d.weight,0))  desc  ]]></if>
+				<if test='"1"==diamondQueryParam.sortByDiscount'><![CDATA[ ,(IFNULL(d.supplier_discount,100)+IFNULL(s.adding,0)) asc ]]></if>
+				<if test='"2"==diamondQueryParam.sortByDiscount'><![CDATA[ ,(IFNULL(d.supplier_discount,100)+IFNULL(s.adding,0)) desc  ]]></if>
+			</if>
+			<if test='"discount"==diamondQueryParam.sortFirst'>
+				<if test='"1"==diamondQueryParam.sortByDiscount'><![CDATA[ (IFNULL(d.supplier_discount,100)+IFNULL(s.adding,0)) asc ]]></if>
+				<if test='"2"==diamondQueryParam.sortByDiscount'><![CDATA[ (IFNULL(d.supplier_discount,100)+IFNULL(s.adding,0)) desc  ]]></if>
+				<if test='"1"==diamondQueryParam.sortByWeight'><![CDATA[ ,d.weight asc ]]></if>
+				<if test='"2"==diamondQueryParam.sortByWeight'><![CDATA[ ,d.weight desc  ]]></if>
+				<if test='"1"==diamondQueryParam.sortByAmount'><![CDATA[ ,((IFNULL(d.supplier_discount,100)+IFNULL(s.adding,0))*IFNULL(d.supplier_price,0)*IFNULL(d.weight,0)) asc  ]]></if>
+				<if test='"2"==diamondQueryParam.sortByAmount'><![CDATA[ ,((IFNULL(d.supplier_discount,100)+IFNULL(s.adding,0))*IFNULL(d.supplier_price,0)*IFNULL(d.weight,0))  desc  ]]></if>
+			</if>
+			<if test='"amount"==diamondQueryParam.sortFirst'>
+				<if test='"1"==diamondQueryParam.sortByAmount'><![CDATA[ ((IFNULL(d.supplier_discount,100)+IFNULL(s.adding,0))*IFNULL(d.supplier_price,0)*IFNULL(d.weight,0)) asc  ]]></if>
+				<if test='"2"==diamondQueryParam.sortByAmount'><![CDATA[ ((IFNULL(d.supplier_discount,100)+IFNULL(s.adding,0))*IFNULL(d.supplier_price,0)*IFNULL(d.weight,0))  desc  ]]></if>
+				<if test='"1"==diamondQueryParam.sortByDiscount'><![CDATA[ ,(IFNULL(d.supplier_discount,100)+IFNULL(s.adding,0)) asc ]]></if>
+				<if test='"2"==diamondQueryParam.sortByDiscount'><![CDATA[, (IFNULL(d.supplier_discount,100)+IFNULL(s.adding,0)) desc  ]]></if>
+				<if test='"1"==diamondQueryParam.sortByWeight'><![CDATA[ ,d.weight asc ]]></if>
+				<if test='"2"==diamondQueryParam.sortByWeight'><![CDATA[ ,d.weight desc  ]]></if>
+			</if>
+		</if>
+		<if test="diamondQueryParam==null"> order by d.id DESC </if>
+ 	<![CDATA[   limit #{startIndex},#{pageSize}
+	]]>
+	</select>
+
+	<select id="selectDiamondCount" resultType="int">
+	<![CDATA[    
+	select count(0) from t_diamond d  
+	]]>
+		<include refid="selectDiamondCondition" />
+	</select>
+
+
+	<sql id="selectBuyableDiamondCondition">
+		<where>
+			d.status=0 and not exists (select a.id from t_order a inner join
+			t_order_detail b on a.id=b.order_id where
+			a.order_status!=8 and b.diamond_id=d.id)
+			<if test="diamondQueryParam!=null">
+				<if test="diamondQueryParam.name !=null and diamondQueryParam.name !=''"><![CDATA[  and d.name like CONCAT('%',trim(#{diamondQueryParam.name}),'%' )]]>
+				</if>
+
+				<choose>
+					<when test="diamondQueryParam.shape !=null">
+				<![CDATA[  and (]]>
+						<foreach collection="diamondQueryParam.shape" item="item"
+							index="index" open="(" close=")" separator="or">
+							d.shape like
+							CONCAT('%',#{item},'%')
+						</foreach>
+						<if test="diamondQueryParam.containOtherShape==1">
+				   <![CDATA[  or (d.shape not like '%round%' and d.shape not like '%pear%' 
+				 and  d.shape not like '%Princess%' and d.shape not like '%Marquise%'
+				  and d.shape not like '%Emerald%' and d.shape not like '%Radiant%'
+				  and d.shape not like '%Trilliant%' and d.shape not like '%Heart%'
+				  and d.shape not like '%Cushion%' and d.shape not like '%Oval%'  
+				   )
+				   
+				   ]]>
+						</if>
+				  <![CDATA[)]]>
+					</when>
+					<otherwise>
+						<if test="diamondQueryParam.containOtherShape==1">
+				   <![CDATA[  and (d.shape not like '%round%' and d.shape not like '%pear%'
+				 and  d.shape not like '%Princess%' and d.shape not like '%Marquise%'
+				and   d.shape not like '%Emerald%' and d.shape not like '%Radiant%'
+				 and  d.shape not like '%Trilliant%' and d.shape not like '%Heart%'
+				 and  d.shape not like '%Cushion%' and d.shape not like '%Oval%'  
+				   )]]>
+						</if>
+				  <![CDATA[]]>
+					</otherwise>
+				</choose>
+
+
+				<choose>
+					<when test="diamondQueryParam.color !=null">
+				<![CDATA[  and (]]>
+						<foreach collection="diamondQueryParam.color" item="item"
+							index="index" open="(" close=")" separator="or">
+							d.color=#{item}
+						</foreach>
+						<if test="diamondQueryParam.multicolour==1">
+				   <![CDATA[  or d.multicolour=1
+				   ]]>
+						</if>
+				  <![CDATA[)]]>
+					</when>
+					<otherwise>
+						<if test="diamondQueryParam.multicolour==1">
+				   <![CDATA[  and  d.multicolour=1 ]]>
+						</if>
+				  <![CDATA[]]>
+					</otherwise>
+				</choose>
+				<if test="diamondQueryParam.clarity !=null"><![CDATA[  and d.clarity in ]]>
+					<foreach collection="diamondQueryParam.clarity" item="item"
+						index="index" open="(" close=")" separator=",">
+						#{item}
+					</foreach>
+				</if>
+				<choose>
+					<when test="diamondQueryParam.cut !=null">
+				<![CDATA[  and (d.cut in ]]>
+						<foreach collection="diamondQueryParam.cut" item="item"
+							index="index" open="(" close=")" separator=",">
+							#{item}
+						</foreach>
+						<if test="diamondQueryParam.containNullCut==1">
+				   <![CDATA[  or d.cut is null or d.cut='none' or d.cut='' ]]>
+						</if>
+				  <![CDATA[)]]>
+					</when>
+					<otherwise>
+						<if test="diamondQueryParam.containNullCut==1">
+				   <![CDATA[  and (d.cut is null or d.cut='none' or d.cut='' )]]>
+						</if>
+				  <![CDATA[]]>
+					</otherwise>
+				</choose>
+				<if test="diamondQueryParam.polish !=null">
+					<![CDATA[  and d.polish in ]]>
+					<foreach collection="diamondQueryParam.polish" item="item"
+						index="index" open="(" close=")" separator=",">
+						#{item}
+					</foreach>
+				</if>
+				<if test="diamondQueryParam.symm !=null">
+				<![CDATA[  and d.symm in ]]>
+					<foreach collection="diamondQueryParam.symm" item="item"
+						index="index" open="(" close=")" separator=",">
+						#{item}
+					</foreach>
+				</if>
+				<if test="diamondQueryParam.fluor !=null">
+					<![CDATA[  and d.fluor in]]>
+					<foreach collection="diamondQueryParam.fluor" item="item"
+						index="index" open="(" close=")" separator=",">
+						#{item}
+					</foreach>
+				</if>
+				<if test="diamondQueryParam.authenticator!=null">
+					<![CDATA[  and d.authenticator in ]]>
+					<foreach collection="diamondQueryParam.authenticator" item="item"
+						index="index" open="(" close=")" separator=",">
+						#{item}
+					</foreach>
+				</if>
+				<if
+					test="diamondQueryParam.minQueryWeight!=null and diamondQueryParam.minQueryWeight !=''">
+					<![CDATA[  and d.weight>=#{diamondQueryParam.minQueryWeight}]]>
+				</if>
+				<if
+					test="diamondQueryParam.maxQueryWeight!=null and diamondQueryParam.maxQueryWeight !=''">
+					<![CDATA[  and d.weight<=#{diamondQueryParam.maxQueryWeight}]]>
+				</if>
+			</if>
+		</where>
+	</sql>
+
+	<select id="selectBuyableDiamondPageList" resultMap="DiamondResult">
+	<![CDATA[    
+	select d.id,d.name,d.image,d.locality,d.shape,d.color,d.clarity,d.cut,d.polish,d.symm,d.fluor,d.authenticator,d.intensity,d.weight,d.discount,
+	d.price,d.cert,d.remark,d.multicolour,d.status,d.creator_id,d.modifier_id,d.depth,d.size,d.taple,d.supplier_id,d.supplier_price,d.supplier_discount,s.adding s_adding
+	 from t_diamond d  inner join t_supplier s on d.supplier_id=s.id ]]>
+		<include refid="selectBuyableDiamondCondition" />
+
+		<if test="diamondQueryParam!=null">
+			<if
+				test='diamondQueryParam.sortByWeight!="0"||diamondQueryParam.sortByDiscount!="0"||diamondQueryParam.sortByAmount!="0"'>
+			  <![CDATA[order by ]]>
+			</if>
+			<if test='"weight"==diamondQueryParam.sortFirst'>
+				<if test='"1"==diamondQueryParam.sortByWeight'><![CDATA[ d.weight asc ]]></if>
+				<if test='"2"==diamondQueryParam.sortByWeight'><![CDATA[ d.weight desc  ]]></if>
+				<if test='"1"==diamondQueryParam.sortByAmount'><![CDATA[ ,((IFNULL(d.supplier_discount,100)+IFNULL(s.adding,0))*IFNULL(d.supplier_price,0)*IFNULL(d.weight,0)) asc  ]]></if>
+				<if test='"2"==diamondQueryParam.sortByAmount'><![CDATA[ ,((IFNULL(d.supplier_discount,100)+IFNULL(s.adding,0))*IFNULL(d.supplier_price,0)*IFNULL(d.weight,0))  desc  ]]></if>
+				<if test='"1"==diamondQueryParam.sortByDiscount'><![CDATA[ ,(IFNULL(d.supplier_discount,100)+IFNULL(s.adding,0)) asc ]]></if>
+				<if test='"2"==diamondQueryParam.sortByDiscount'><![CDATA[ ,(IFNULL(d.supplier_discount,100)+IFNULL(s.adding,0)) desc  ]]></if>
+			</if>
+			<if test='"discount"==diamondQueryParam.sortFirst'>
+				<if test='"1"==diamondQueryParam.sortByDiscount'><![CDATA[ (IFNULL(d.supplier_discount,100)+IFNULL(s.adding,0)) asc ]]></if>
+				<if test='"2"==diamondQueryParam.sortByDiscount'><![CDATA[ (IFNULL(d.supplier_discount,100)+IFNULL(s.adding,0)) desc  ]]></if>
+				<if test='"1"==diamondQueryParam.sortByWeight'><![CDATA[ ,d.weight asc ]]></if>
+				<if test='"2"==diamondQueryParam.sortByWeight'><![CDATA[ ,d.weight desc  ]]></if>
+				<if test='"1"==diamondQueryParam.sortByAmount'><![CDATA[ ,((IFNULL(d.supplier_discount,100)+IFNULL(s.adding,0))*IFNULL(d.supplier_price,0)*IFNULL(d.weight,0)) asc  ]]></if>
+				<if test='"2"==diamondQueryParam.sortByAmount'><![CDATA[ ,((IFNULL(d.supplier_discount,100)+IFNULL(s.adding,0))*IFNULL(d.supplier_price,0)*IFNULL(d.weight,0))  desc  ]]></if>
+			</if>
+			<if test='"amount"==diamondQueryParam.sortFirst'>
+				<if test='"1"==diamondQueryParam.sortByAmount'><![CDATA[ ((IFNULL(d.supplier_discount,100)+IFNULL(s.adding,0))*IFNULL(d.supplier_price,0)*IFNULL(d.weight,0)) asc  ]]></if>
+				<if test='"2"==diamondQueryParam.sortByAmount'><![CDATA[ ((IFNULL(d.supplier_discount,100)+IFNULL(s.adding,0))*IFNULL(d.supplier_price,0)*IFNULL(d.weight,0))  desc  ]]></if>
+				<if test='"1"==diamondQueryParam.sortByDiscount'><![CDATA[ ,(IFNULL(d.supplier_discount,100)+IFNULL(s.adding,0)) asc ]]></if>
+				<if test='"2"==diamondQueryParam.sortByDiscount'><![CDATA[, (IFNULL(d.supplier_discount,100)+IFNULL(s.adding,0)) desc  ]]></if>
+				<if test='"1"==diamondQueryParam.sortByWeight'><![CDATA[ ,d.weight asc ]]></if>
+				<if test='"2"==diamondQueryParam.sortByWeight'><![CDATA[ ,d.weight desc  ]]></if>
+			</if>
+		</if>
+		<if test="diamondQueryParam==null"> order by d.id DESC </if>
+ 	<![CDATA[   limit #{startIndex},#{pageSize}
+	]]>
+	</select>
+
+	<select id="selectBuyableDiamondCount" resultType="int">
+	<![CDATA[    
+	select count(0) from t_diamond  d
+	]]>
+		<include refid="selectBuyableDiamondCondition" />
+	</select>
+
+	<select id="findDiamondById" resultMap="DiamondDetailResult">
+	<![CDATA[    
+		select id,name,image,locality,shape,color,clarity,cut,polish,symm,fluor,authenticator,intensity,weight,discount,price,cert,depth,size,taple,supplier_id,supplier_price,supplier_discount,
+	remark,status,multicolour,creator_id,modifier_id from t_diamond
+	 where id=#{id}
+	]]>
+	</select>
+
+	<select id="findByName" resultMap="DiamondResult">
+	<![CDATA[    
+		select id,name,image,locality,shape,color,clarity,cut,polish,symm,fluor,authenticator,intensity,weight,discount,price,cert,depth,size,taple,multicolour,
+	remark,status,creator_id,modifier_id, from t_diamond
+	 where name=#{name}
+	]]>
+		<if test="id!=0"><![CDATA[  and id<>#{id} ]]></if>
+
+	</select>
+
+	<insert id="insertDiamond" parameterType="Diamond">
+		<selectKey resultType="int" keyProperty="id" order="AFTER">
+			SELECT
+			LAST_INSERT_ID() AS ID
+		</selectKey>
+		<![CDATA[
+		insert into t_diamond (name,image,locality,shape,color,clarity,cut,polish,symm,fluor,authenticator,intensity,weight,discount,price,cert,depth,size,taple,
+	remark,status,multicolour,supplier_id,supplier_price,supplier_discount,create_time,creator_id,modify_time,modifier_id)
+		values
+		(#{name},#{image},#{locality},#{shape},#{color},#{clarity},#{cut},#{polish},#{symm},#{fluor},#{authenticator},#{intensity},#{weight},#{discount},#{price},#{cert},
+		#{depth},#{size},#{taple},#{remark},#{status},#{multicolour},#{supplierId},#{supplierPrice},#{supplierDiscount},
+		now(),#{creatorId},now(),#{modifierId})
+		 ]]>
+	</insert>
+	<update id="deleteById"><![CDATA[update t_diamond set status=2,modify_time=now(),modifier_id=#{modifierId} where id=#{id}]]></update>
+
+	<update id="updateStatus"><![CDATA[update t_diamond set status=#{status},modify_time=now(),modifier_id=#{modifierId} where id=#{id}]]></update>
+
+
+	<update id="updateDiamond" parameterType="Diamond"><![CDATA[update t_diamond set name=#{name},image=#{image},locality=#{locality}
+	,shape=#{shape},color=#{color},clarity=#{clarity},cut=#{cut},polish=#{polish},symm=#{symm},fluor=#{fluor},authenticator=#{authenticator} 
+	,intensity=#{intensity},weight=#{weight},discount=#{discount},price=#{price},cert=#{cert},remark=#{remark},depth=#{depth},size=#{size},taple=#{taple},
+	supplier_id=#{supplierId},multicolour=#{multicolour},supplier_discount=#{supplierDiscount},supplier_price=#{supplierPrice},
+	modifier_id=#{modifierId},modify_time=now() 
+	,status=#{status} where id=#{id}]]>
+	</update>
+
+	<insert id="insertDiamondSupplier" parameterType="DiamondSupplier">
+		<selectKey resultType="int" keyProperty="id" order="AFTER">
+			SELECT
+			LAST_INSERT_ID() AS ID
+		</selectKey>
+		<![CDATA[
+		insert into t_diamond_supplier (diamond_id,supplier_id,price,discount)
+		values
+		(#{diamondId},#{supplierId},#{price},#{discount})]]>
+	</insert>
+
+	<update id="updateDiamondSupplier" parameterType="DiamondSupplier"> 
+		<![CDATA[
+		update t_diamond_supplier set price=#{price},discount=#{discount},supplier_id=#{supplierId} where
+		id=#{id}]]>
+	</update>
+
+	<delete id="deleteDiamondSupplier">
+	<![CDATA[
+	delete from t_diamond_supplier where diamond_id= #{diamondId}
+		]]>
+	</delete>
+
+	<select id="findDiamondByCert" resultMap="DiamondDetailResult">
+	<![CDATA[    
+		select id,name,image,locality,shape,color,clarity,cut,polish,symm,fluor,authenticator,intensity,weight,discount,price,cert,depth,size,taple,
+	 remark,status,creator_id,modifier_id,multicolour from t_diamond
+	 where cert=#{cert}
+	]]>
+	</select>
+
+	<update id="updateAllStatus">
+	 <![CDATA[
+		update t_diamond set status=#{status}]]>
+	</update>
+
+	<delete id="deleteUnsoldDiamond">
+	<![CDATA[
+	delete from t_diamond where supplier_id=#{supplierId} and 
+	not exists(select o.id from t_order_detail o where o.diamond_id=t_diamond.id) 
+		]]>
+	</delete>
+
+	<delete id="deleteUnsoldDiamondSupplier">
+	<![CDATA[
+	delete from t_diamond_supplier 
+	where supplier_id=#{supplierId} and 
+	not exists(select o.id from t_order_detail o where o.diamond_id=ds.diamond_id)
+		]]>
+	</delete>
+
+	<select id="selectDiamondFromImp" resultMap="DiamondResult">
+	<![CDATA[    
+ select d.name,d.image,d.locality,d.shape,d.color,d.clarity,d.cut,d.polish,d.symm,d.fluor,d.authenticator,d.weight,d.discount,d.price,d.cert,
+  d.remark,d.status,d.multicolour,d.supplier_id,
+  d.depth,d.size,d.taple from t_diamond_import d where d.supplier_id=#{supplierId}  limit #{startIndex},#{pageSize}]]>
+	</select>
+
+	<insert id="copyFromImp">
+	<![CDATA[    
+		insert into t_diamond (name,image,locality,shape,color,clarity,cut,polish,symm,fluor,authenticator,weight,discount,price,cert,depth,size,taple,
+	remark,status,multicolour,supplier_id,supplier_price,supplier_discount,create_time,modify_time) 
+ select d.name,d.image,d.locality,d.shape,d.color,d.clarity,d.cut,d.polish,d.symm,d.fluor,d.authenticator,d.weight,d.discount,d.price,d.cert,
+d.depth,d.size,d.taple,d.remark,0,d.multicolour,d.supplier_id,d.price,d.discount,now(),now() from t_diamond_import d where d.supplier_id=#{supplierId}
+and not exists(SELECT o.id FROM t_order_detail o WHERE o.cert=d.cert)]]>
+	</insert>
+
+	<insert id="updateFormImp">
+	<![CDATA[    
+		UPDATE t_diamond d INNER JOIN t_diamond_import imp 
+ON d.cert=imp.cert 
+SET d.supplier_price=imp.price,d.supplier_discount=imp.discount
+WHERE d.supplier_id=#{supplierId}  and EXISTS(SELECT od.id FROM t_order_detail od INNER JOIN 
+t_order o ON od.order_id=o.id WHERE o.order_status IN(1,2,8)) 
+]]>
+	</insert>
+
+</mapper>

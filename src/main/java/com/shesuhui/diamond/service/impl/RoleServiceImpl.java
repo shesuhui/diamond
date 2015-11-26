@@ -43,7 +43,7 @@ public class RoleServiceImpl implements RoleService {
     }
 
     @Override
-    public void addUserToRole(String userId, String roleName) {
+    public void addUserToRole(Integer userId, String roleName) {
         Role role = roleMapper.getRoleByName(roleName);
         
         UserRole userRole = new UserRole();
@@ -59,7 +59,7 @@ public class RoleServiceImpl implements RoleService {
     }
 
     @Override
-    public void removeAllUserRoleAssociation(String userId) {
+    public void removeAllUserRoleAssociation(Integer userId) {
         roleMapper.removeAllUserRoleAssociation(userId);
     }
 

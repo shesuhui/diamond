@@ -1,180 +1,165 @@
 package com.shesuhui.diamond.model;
 
-import java.io.Serializable;
-import java.util.List;
-import java.util.UUID;
-
-import org.apache.commons.lang3.StringUtils;
-import org.springframework.beans.BeanUtils;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.shesuhui.diamond.util.Constants;
-import com.shesuhui.diamond.vo.UserVo;
+import com.shesuhui.diamond.enums.UserStatusEnum;
+import com.shesuhui.diamond.enums.UserTypeEnum;
 
-public class User implements Serializable {
+public class User extends AbstractBaseEntity
+{
+  private static final long serialVersionUID = 1L;
+  private String name;
+  private String loginId;
+  private String password;
+  private UserTypeEnum userType;
+  private UserStatusEnum userStatus;
+  private String lastLoginTime;
+  private String currentLoginTime;
+  private int loginTimes;
+  private String mobile;
+  private String fax;
+  private String address;
+  private String businessLicense;
+  private String email;
+  private String defaultMenuUrl;
 
-    private static final long serialVersionUID = -5422522094276010183L;
-
-    private boolean isInitialized;
-    private UserVo userVo;
-
-    /**
-     * 内部会自动生�?id
-     */
-    public User() {
-
+  public void setDefaultMenuUrl()
+  {
+    if ((getUserType() == UserTypeEnum.BUYER.getValue()) && 
+      (getUserStatus() == UserStatusEnum.NORMAL.getValue()))
+    {
+      this.defaultMenuUrl = "/buyer/index.do";
     }
-
-    /**
-     * 如果 UserVo id 不为空则使用 UserVo �?id, 否则使用User内部生成�?id
-     */
-    public User(UserVo userVo) {
-        this();
-        this.userVo = userVo;
+    else if (getUserType() == UserTypeEnum.CUSTOMER_SERVICE.getValue())
+    {
+      this.defaultMenuUrl = "/order/index.do";
+    } else if (getUserType() == UserTypeEnum.ADMIN.getValue())
+    {
+      this.defaultMenuUrl = "/user/index.do";
     }
+  }
 
-    private void init() {
-        if (!isInitialized) {
-            if(null == userVo) {
-                // 这里不能调用 getXxx, 会产生循环调�?
-                if (StringUtils.isBlank(this.id)) {
-                    setId(UUID.randomUUID().toString());
-                }
-            } else {
-                setUserVo(userVo);
-            }
-            // 表示初始化完�?
-            userVo = null;
-            isInitialized = true;
-        }
-    }
+  public String getDefaultMenuUrl() {
+    return this.defaultMenuUrl;
+  }
 
-    /**
-     * 如果 UserVo id 不为空则使用 UserVo �?id, 否则使用User内部生成�?id
-     */
-    public void setUserVo(UserVo userVo) {
-        BeanUtils.copyProperties(userVo, this);
-        // 这里不能调用 getXxx, 会产生循环调�?
-        if (StringUtils.isBlank(this.id)) {
-            setId(UUID.randomUUID().toString());
-        }
+  public String getName() {
+    return this.name;
+  }
 
-        if (Constants.SEX_NAME_MAN.equals(userVo.getSexName())) {
-            setSex(Constants.SEX_MAN);
-        } else if (Constants.SEX_NAME_WOMEN.equals(userVo.getSexName())) {
-            setSex(Constants.SEX_WOMEN);
-        }
+  public void setName(String name) {
+    this.name = name;
+  }
 
-  
-    }
+  public String getLoginId() {
+    return this.loginId;
+  }
 
-    // ID
-    private String id;
+  public void setLoginId(String loginId) {
+    this.loginId = loginId;
+  }
 
-    //用户名
-    private String loginName;
+  public String getPassword() {
+    return this.password;
+  }
 
-    //昵称
-    private String userName;
+  public void setPassword(String password) {
+    this.password = password;
+  }
 
-    // 密码
-    private String password;
+  public int getUserType() {
+    return this.userType == null ? -1 : this.userType.getValue();
+  }
 
-    // 手机
-    private String mobile;
+  public String getUserTypeName() {
+    return this.userType == null ? null : this.userType.getName();
+  }
+  @JsonIgnore
+  public UserTypeEnum getUserTypeEnum() {
+    return this.userType;
+  }
 
-    // 邮箱
-    private String email;
+  public void setUserType(int userType) {
+    this.userType = UserTypeEnum.valueOf(userType);
+  }
 
-    // 姓别：[1：男�?：女] @See FDCConstants
-    private int sex;
+  public String getLastLoginTime() {
+    return this.lastLoginTime;
+  }
 
-    // 年龄
-    private int age;
+  public void setLastLoginTime(String lastLoginTime) {
+    this.lastLoginTime = lastLoginTime;
+  }
 
-   
-    private List<Role> roles;
+  public String getCurrentLoginTime() {
+    return this.currentLoginTime;
+  }
 
-    @JsonIgnore
-    public String getPassword() {
-        init();
-        return password;
-    }
+  public void setCurrentLoginTime(String currentLoginTime) {
+    this.currentLoginTime = currentLoginTime;
+  }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
+  public String getMobile() {
+    return this.mobile;
+  }
 
-    public String getLoginName() {
-        init();
-        return loginName;
-    }
+  public void setMobile(String mobile) {
+    this.mobile = mobile;
+  }
 
-    public void setLoginName(String loginName) {
-        this.loginName = loginName;
-    }
+  public String getFax() {
+    return this.fax;
+  }
 
-    public String getUserName() {
-        init();
-        return userName;
-    }
+  public void setFax(String fax) {
+    this.fax = fax;
+  }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
+  public String getAddress() {
+    return this.address;
+  }
 
-    public int getSex() {
-        init();
-        return sex;
-    }
+  public void setAddress(String address) {
+    this.address = address;
+  }
 
-    public void setSex(int sex) {
-        this.sex = sex;
-    }
+  public String getBusinessLicense() {
+    return this.businessLicense;
+  }
 
-    public int getAge() {
-        init();
-        return age;
-    }
+  public void setBusinessLicense(String businessLicense) {
+    this.businessLicense = businessLicense;
+  }
 
-    public void setAge(int age) {
-        this.age = age;
-    }
+  public int getLoginTimes() {
+    return this.loginTimes;
+  }
 
-    public String getMobile() {
-        init();
-        return mobile;
-    }
+  public void setLoginTimes(int loginTimes) {
+    this.loginTimes = loginTimes;
+  }
 
-    public void setMobile(String mobile) {
-        this.mobile = mobile;
-    }
+  public String getEmail() {
+    return this.email;
+  }
 
-    public String getEmail() {
-        init();
-        return email;
-    }
+  public void setEmail(String email) {
+    this.email = email;
+  }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
+  public String getUserStatusName() {
+    return this.userStatus == null ? null : this.userStatus.getName();
+  }
+  @JsonIgnore
+  public UserStatusEnum getUserStatusEnum() {
+    return this.userStatus;
+  }
 
-    public List<Role> getRoles() {
-        init();
-        return roles;
-    }
+  public void setUserStatus(int userStatus) {
+    this.userStatus = UserStatusEnum.valueOf(userStatus);
+  }
 
-    public void setRoles(List<Role> roles) {
-        this.roles = roles;
-    }
-
-   
-    public String getId() {
-        init();
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
+  public int getUserStatus() {
+    return this.userStatus == null ? -1 : this.userStatus.getValue();
+  }
 }

@@ -17,7 +17,7 @@ public interface RoleService {
 	 * @param userId
 	 * @param roleName
 	 */
-	public void addUserToRole(String userId, String roleName);
+	public void addUserToRole(Integer userId, String roleName);
 
 	/**
 	 * 
@@ -26,7 +26,7 @@ public interface RoleService {
 	 */
 	public void removeUserFromRole(String userId, String roleName);
 
-	public void removeAllUserRoleAssociation(String userId);
+	public void removeAllUserRoleAssociation(Integer userId);
 
 	public List<Role> getRoles();
 }

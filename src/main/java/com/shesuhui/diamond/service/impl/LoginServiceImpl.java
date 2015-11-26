@@ -13,6 +13,7 @@ import com.shesuhui.diamond.model.Permit;
 import com.shesuhui.diamond.model.Role;
 import com.shesuhui.diamond.model.User;
 import com.shesuhui.diamond.service.LoginService;
+import com.shesuhui.diamond.util.MD5Util;
 
 
 @Service
@@ -51,6 +52,6 @@ public class LoginServiceImpl implements LoginService {
 
     @Override
     public User getUser(String loginName, String password) {
-        return this.userMapper.getUserByPassword(loginName, password);
+        return this.userMapper.getUserByPassword(loginName, MD5Util.MD5(password));
     }
 }

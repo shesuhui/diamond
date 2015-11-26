@@ -8,7 +8,7 @@ public class UserRole implements Serializable {
 
     private String id;
 
-    private String userId;
+    private Integer userId;
 
     private String roleId;
 
@@ -29,14 +29,14 @@ public class UserRole implements Serializable {
     /**
      * @return the userId
      */
-    public String getUserId() {
+    public Integer getUserId() {
         return userId;
     }
 
     /**
      * @param userId the userId to set
      */
-    public void setUserId(String userId) {
+    public void setUserId(Integer userId) {
         this.userId = userId;
     }
 

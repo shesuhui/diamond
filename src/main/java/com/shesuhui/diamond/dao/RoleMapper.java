@@ -23,6 +23,6 @@ public interface RoleMapper {
 
     public List<Role> getRoles();
 
-    public int removeAllUserRoleAssociation(@Param(value = "userId") String userId);
+    public int removeAllUserRoleAssociation(@Param(value = "userId") Integer userId);
 
 }

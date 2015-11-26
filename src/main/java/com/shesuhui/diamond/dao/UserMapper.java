@@ -10,31 +10,31 @@ import com.shesuhui.diamond.model.User;
 @Repository
 public interface UserMapper {
 
-    String getPassword(@Param(value = "id") String id);
+	String getPassword(@Param(value = "id") String id);
 
-    String updatePassword(@Param(value = "id") String id, @Param(value = "password") String password);
+	String updatePassword(@Param(value = "id") String id, @Param(value = "password") String password);
 
-    void addUser(User user);
+	void addUser(User user);
 
-    void updateUser(User User);
+	void updateUser(User User);
 
-    void updatePersonal(User User);
+	void updatePersonal(User User);
 
-    void deleteUser(@Param(value = "id") String id);
+	void deleteUserById(@Param("id") int paramInt1, @Param("modifierId") int paramInt2);
 
-    User getUserById(@Param(value = "userId") String userId);
+	User getUserById(@Param(value = "userId") Integer userId);
 
-    User getUserByName(@Param(value = "userName") String userName);
-    
-    User getUserByRoom(@Param(value = "roomId") String roomId);
+	User getUserByName(@Param(value = "userName") String userName);
 
-    List<User> findUsers(int start, int limit);
+	User getUserByRoom(@Param(value = "roomId") String roomId);
 
-    User getUserWihtRoomRole(@Param(value = "userId") String userId);
+	List<User> findUsers(int start, int limit);
 
-    User getUserByLoginName(@Param(value = "loginName") String loginName);
+	User getUserWihtRoomRole(@Param(value = "userId") String userId);
 
-    User getUserByPassword(@Param(value = "loginName") String loginName, @Param(value = "password") String password);
+	User getUserByLoginName(@Param(value = "loginName") String loginName);
 
-    int getTotalCount();
+	User getUserByPassword(@Param(value = "loginName") String loginName, @Param(value = "password") String password);
+
+	int getTotalCount();
 }
