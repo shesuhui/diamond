@@ -59,7 +59,7 @@ public class LoginController {
         String msg = null;
         HttpSession session = request.getSession();
         Subject subject = SecurityUtils.getSubject();
-        String url = "/index";
+        String url = "user-index";
         if (session == null || session.getAttribute(Constants.LOGIN_USER_SESSINON_KEY) == null) {
             String username = request.getParameter("loginId");
             String password = request.getParameter("password");
@@ -85,7 +85,7 @@ public class LoginController {
             }
 
         }
-        if (subject.hasRole(Constants.ROLE_ADMIN)) {
+      /*  if (subject.hasRole(Constants.ROLE_ADMIN)) {
             // 管理员角色
             url = "admin-index";
         } else if (subject.hasRole(Constants.ROLE_BUYER)) {
@@ -104,7 +104,7 @@ public class LoginController {
         if (StringUtils.isNotBlank(msg)) {
             session.setAttribute("msg", msg);
         }
-
+*/
         return url;
     }
 

@@ -20,7 +20,7 @@ import com.shesuhui.diamond.util.MD5Util;
 public class LoginServiceImpl implements LoginService {
 
     @Resource
-    private UserDao userMapper;
+    private UserDao userDao;
 
     @Resource
     private RoleMapper roleMapper;
@@ -47,11 +47,11 @@ public class LoginServiceImpl implements LoginService {
 
     @Override
     public User getUserByLoginName(String loginName) {
-        return this.userMapper.getUserByLoginName(loginName);
+        return this.userDao.getUserByLoginName(loginName);
     }
 
     @Override
     public User getUser(String loginName, String password) {
-        return this.userMapper.getUserByPassword(loginName, MD5Util.MD5(password));
+        return this.userDao.getUserByPassword(loginName, MD5Util.MD5(password));
     }
 }

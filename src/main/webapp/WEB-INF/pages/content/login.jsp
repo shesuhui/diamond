@@ -4,7 +4,7 @@
 <html>
 <body>
 <div class="container">
-		<img src="${pageContext.request.contextPath }/images/diamond3.jpg" class="img-rounded center-block">
+		<img src="${pageContext.request.contextPath}/images/diamond3.jpg" class="img-rounded center-block">
 		<h1 style="text-align:center">欢 迎 选 购</h1>
 	</div>
 </body>

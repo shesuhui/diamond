@@ -32,7 +32,7 @@ public class LoginActionRealm extends JdbcRealm {
      */
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
         // null usernames are invalid
-        if (principals == null) {
+  /*      if (principals == null) {
             throw new AuthorizationException("PrincipalCollection method argument cannot be null.");
         }
         String username = (String) getAvailablePrincipal(principals);
@@ -49,7 +49,8 @@ public class LoginActionRealm extends JdbcRealm {
         }
         SimpleAuthorizationInfo info = new SimpleAuthorizationInfo(roleNames);
         info.setStringPermissions(permissions);
-        return info;
+        return info;*/
+    	return null;
     }
 
     /**
