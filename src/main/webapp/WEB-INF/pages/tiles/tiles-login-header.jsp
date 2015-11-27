@@ -1,8 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@page language="java" import="com.shesuhui.diamond.model.*,java.util.*"%>
+<%@page language="java"
+	import="com.shesuhui.diamond.model.*,java.util.*"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<script type="text/javascript" src="${pageContext.request.contextPath}/javascript/func/login.js"></script>
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/javascript/func/login.js"></script>
 
 <div class="container" id="top">
 	<nav class="navbar  navbar-inverse navbar-fixed-top" role="navigation">
@@ -15,12 +17,14 @@
 						class="icon-bar"></span>
 				</button>
 				<a class="navbar-brand navbar-brand-active" href="#"> <img
-					alt="钻石商城" src="${pageContext.request.contextPath }/images/favicon.png">
+					alt="钻石商城"
+					src="${pageContext.request.contextPath }/images/favicon.png">
 				</a> <a class="navbar-brand  navbar-brand-active" href="/">钻石商城</a>
 			</div>
 			<div class="collapse navbar-collapse" id="navbar">
-
-				<form class="navbar-form navbar-right" role="search" id="loginForm">
+				<div class="error">${sessionScope.msg}</div>
+				<form class="navbar-form navbar-right" role="search" id="loginForm"
+					>
 					<div class="form-group">
 						<input type="text" class="form-control focus" placeholder="用户名"
 							data-toggle="tooltip" data-placement="bottom" title="请输入用户名"

@@ -20,7 +20,7 @@
 	<!-- shiro配置 -->
 	<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
 		<property name="securityManager" ref="securityManager" />
-		<property name="loginUrl" value="/login.jsp" />
+		<property name="loginUrl" value="login/index.jsp" />
 		<property name="successUrl" value="/center" />
 		<property name="unauthorizedUrl" value="/unauthorized.jsp" />
 		<property name="filters">
@@ -31,7 +31,7 @@
 		<property name="filterChainDefinitions">
 			<value>
 			<!-- 所有带html请求的路径，如/usr/listUser.html，需要先登录 -->
-				/login/**.html = anon
+			 	/login/**.html = anon
 				/mobilelogin.html = anon
 				/mobile/**/**.html = anon
 				/user/**.html = perms[property]

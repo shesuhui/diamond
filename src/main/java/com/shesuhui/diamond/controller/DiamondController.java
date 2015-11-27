@@ -16,9 +16,9 @@ public class DiamondController {
 	@Resource(name = "diamondService")
 	private DiamondService diamondService = null;
 
-	@RequestMapping("/diamond")
+	@RequestMapping("index")
 	public String index() {
-		return null;
+		return "diamondList";
 
 	}
 }

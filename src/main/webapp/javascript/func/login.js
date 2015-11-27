@@ -30,6 +30,9 @@ $(function() {
 				} else {
 					bootbox.alert("登录出错!");
 				}
+				if(status!="success"){
+					bootbox.alert("登录出错!");
+				}
 				$btn.button('reset');
 				return false;
 			});

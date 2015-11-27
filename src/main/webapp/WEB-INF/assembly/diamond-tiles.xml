@@ -28,10 +28,11 @@
 		<put-attribute name="header" value="/WEB-INF/pages/tiles/tiles-admin-header.jsp" />
 		<put-attribute name="content" value="/WEB-INF/pages/content/property-index.jsp" />
 	</definition>
-	<definition name="customer-index" extends="baseLayout">
-		<put-attribute name="title" value="物业管理" />
+	
+	<definition name="diamondList" extends="baseLayout">
+		<put-attribute name="title" value="钻石商城" />
 		<put-attribute name="header" value="/WEB-INF/pages/tiles/tiles-customer-header.jsp" />
-		<put-attribute name="content" value="/WEB-INF/pages/content/customer-index.jsp" />
+		<put-attribute name="content" value="/WEB-INF/pages/content/diamond/diamondList.jsp" />
 	</definition>
 	<definition name="owner-index" extends="baseLayout">
 		<put-attribute name="title" value="公告栏" />
