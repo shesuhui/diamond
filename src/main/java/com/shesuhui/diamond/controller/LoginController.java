@@ -106,7 +106,7 @@ public class LoginController {
 
 		if (loginSuccessed) {
 			Map resMap = new HashMap();
-			resMap.put("goUrl", "/diamondList");
+			resMap.put("goUrl", "/diamond/index.html");
 			result.setResult(resMap);
 			result.setCode(0);
 		}

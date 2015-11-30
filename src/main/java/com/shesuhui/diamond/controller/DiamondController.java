@@ -1,6 +1,9 @@
 package com.shesuhui.diamond.controller;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -8,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.shesuhui.diamond.service.DiamondService;
+import com.shesuhui.diamond.util.Constants;
 
 @Controller
 @RequestMapping("/diamond")
@@ -17,7 +21,12 @@ public class DiamondController {
 	private DiamondService diamondService = null;
 
 	@RequestMapping("index")
-	public String index() {
+	public String index(HttpServletRequest request, HttpServletResponse response) {
+		HttpSession session = request.getSession();
+		Object object=session.getAttribute(Constants.LOGIN_USER_SESSINON_KEY);
+		if(object!=null){
+			
+		}
 		return "diamondList";
 
 	}

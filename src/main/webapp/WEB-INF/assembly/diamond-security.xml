@@ -20,7 +20,7 @@
 	<!-- shiro配置 -->
 	<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
 		<property name="securityManager" ref="securityManager" />
-		<property name="loginUrl" value="login/index.jsp" />
+		<property name="loginUrl" value="/login/index.html" />
 		<property name="successUrl" value="/center" />
 		<property name="unauthorizedUrl" value="/unauthorized.jsp" />
 		<property name="filters">
